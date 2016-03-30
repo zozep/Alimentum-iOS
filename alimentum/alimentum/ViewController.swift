@@ -10,12 +10,21 @@ import UIKit
 
 
 
-class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, LastPageViewControllerDelegate {
     
     var pageViewController = UIPageViewController()
     let pages = ["PageOneViewController", "PageTwoViewController", "PageThreeViewController"]
-
-    //Mark: - ==============PAGE VIEW CONTROLLER DATASOURCE
+    
+    
+    //MARK: - =============LastPageViewControllerDelegate Methods
+    func lastPageDone() {
+        print("View Controller says Last Page done")
+        //...
+    }
+    
+    
+    
+    //MARK: - ==============PAGE VIEW CONTROLLER DATASOURCE
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController
         //current page returns UIViewController optional
         viewController: UIViewController) -> UIViewController? {
@@ -29,6 +38,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     }
     
     
+    
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         
         if let index = pages.indexOf(viewController.restorationIdentifier!) {
@@ -40,8 +50,15 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     }
     
     
+    
+    
     func viewControllerAtIndex(index: Int) -> UIViewController? {
         let vc = storyboard?.instantiateViewControllerWithIdentifier(pages[index])
+        
+        if pages[index] == "PageThreeViewController" {
+            (vc as! LastPageViewController).delegate = self
+        }
+        
         return vc
     }
     
