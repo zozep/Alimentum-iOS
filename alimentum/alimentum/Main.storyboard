@@ -37,37 +37,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fut-Dr-cNj">
-<<<<<<< HEAD
                                                     <rect key="frame" x="119" y="20" width="421" height="129"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Business Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73Q-jj-1Od">
                                                             <rect key="frame" x="0.0" y="0.0" width="421" height="33"/>
-=======
-                                                    <rect key="frame" x="169" y="20" width="154" height="129"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="Business Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73Q-jj-1Od">
-                                                            <rect key="frame" x="0.0" y="0.0" width="154" height="33"/>
->>>>>>> 951c434be87f3c10bcc7ba3c6df146401aaf292a
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Phone #" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1r-7d-h41">
-<<<<<<< HEAD
                                                             <rect key="frame" x="0.0" y="41" width="421" height="18"/>
-=======
-                                                            <rect key="frame" x="0.0" y="41" width="154" height="18"/>
->>>>>>> 951c434be87f3c10bcc7ba3c6df146401aaf292a
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiV-iS-MEt">
-<<<<<<< HEAD
                                                             <rect key="frame" x="0.0" y="67" width="421" height="36"/>
-=======
-                                                            <rect key="frame" x="0.0" y="67" width="154" height="36"/>
->>>>>>> 951c434be87f3c10bcc7ba3c6df146401aaf292a
                                                             <string key="text">123 Broadway St.
 Bellevue, WA 98004</string>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -75,12 +60,8 @@ Bellevue, WA 98004</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Rating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A61-Gh-Imu">
-<<<<<<< HEAD
                                                             <rect key="frame" x="0.0" y="111" width="421" height="18"/>
-=======
-                                                            <rect key="frame" x="0.0" y="111" width="154" height="18"/>
->>>>>>> 951c434be87f3c10bcc7ba3c6df146401aaf292a
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                           <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -107,12 +88,9 @@ Bellevue, WA 98004</string>
                                                     </variation>
                                                 </stackView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zyG-qd-614">
-<<<<<<< HEAD
+
                                                     <rect key="frame" x="8" y="33" width="103" height="103"/>
-=======
-                                                    <rect key="frame" x="8" y="8" width="153" height="153"/>
->>>>>>> 951c434be87f3c10bcc7ba3c6df146401aaf292a
-                                                    <constraints>
+							   <constraints>
                                                         <constraint firstAttribute="width" secondItem="zyG-qd-614" secondAttribute="height" multiplier="1:1" id="w1U-oy-J72"/>
                                                     </constraints>
                                                 </imageView>
@@ -155,7 +133,6 @@ Bellevue, WA 98004</string>
                             <constraint firstItem="j8J-5a-B0X" firstAttribute="top" secondItem="KJu-yO-jIx" secondAttribute="bottom" constant="8" symbolic="YES" id="zrI-Qq-wuM"/>
                         </constraints>
                     </view>
-<<<<<<< HEAD
                     <connections>
                         <outlet property="deliveryOnlyButtonClicked" destination="KJu-yO-jIx" id="FRi-5i-FO4"/>
                         <outlet property="tableView" destination="j8J-5a-B0X" id="JIq-r6-iLs"/>
@@ -164,13 +141,6 @@ Bellevue, WA 98004</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="328" y="604"/>
-=======
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-115.5" y="-140.5"/>
->>>>>>> 951c434be87f3c10bcc7ba3c6df146401aaf292a
         </scene>
     </scenes>
 </document>

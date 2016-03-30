@@ -12,10 +12,7 @@ import UIKit
 
 class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, LastPageViewControllerDelegate {
     
-<<<<<<< HEAD
-=======
     var pageViewController = UIPageViewController()
->>>>>>> 951c434be87f3c10bcc7ba3c6df146401aaf292a
     let pages = ["PageOneViewController", "PageTwoViewController", "PageThreeViewController"]
     
     
