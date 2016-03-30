@@ -88,6 +88,14 @@
             </objects>
             <point key="canvasLocation" x="-1162" y="-3083"/>
         </scene>
+        <!--MainViewController-->
+        <scene sceneID="CQI-on-Qfg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" bundleIdentifier="com.joseph.alimentum" referencedIdentifier="MainViewController" id="oZm-jm-Huc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c8w-vY-uUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1090.5" y="-2647"/>
+        </scene>
         <!--Last Page View Controller-->
         <scene sceneID="N5q-aa-1Ia">
             <objects>
@@ -111,6 +119,7 @@
                                 <state key="normal" title="GO!"/>
                                 <connections>
                                     <action selector="goButtonClicked:" destination="ppo-fW-8cU" eventType="touchUpInside" id="WGs-jW-hm5"/>
+                                    <segue destination="oZm-jm-Huc" kind="show" id="PLa-RW-e2l"/>
                                 </connections>
                             </button>
                         </subviews>

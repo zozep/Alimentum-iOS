@@ -19,7 +19,25 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     //MARK: - =============LastPageViewControllerDelegate Methods
     func lastPageDone() {
         print("View Controller says Last Page done")
-        //...
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainVC = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
+        presentViewController(mainVC, animated: true, completion: nil)
+//        if let mainVC = storyboard?.instantiateViewControllerWithIdentifier("MainViewController") {
+//            let currentVC = pageViewController
+//            
+//            mainVC.view.frame = currentVC.view.frame
+//            mainVC.willMoveToParentViewController(self)
+//            addChildViewController(mainVC)
+//            
+//            transitionFromViewController(currentVC, toViewController: mainVC, duration: 1.0, options: .TransitionCrossDissolve, animations: {
+//                //
+//                }, completion: { (Bool) -> Void in
+//                    currentVC.removeFromParentViewController()
+//                    mainVC.didMoveToParentViewController(self)
+//            })
+//        }
+        
     }
     
     
