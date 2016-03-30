@@ -12,20 +12,30 @@ import UIKit
 
 class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
-    var pageViewController = UIPageViewController!
+    var pageViewController = UIPageViewController()
     let pages = ["PageOneViewController", "PageTwoViewController", "PageThreeViewController"]
 
-    //Mark: PAGE VIEW CONTROLLER DATASOURCE
+    //Mark: - ==============PAGE VIEW CONTROLLER DATASOURCE
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController
-        
         //current page returns UIViewController optional
         viewController: UIViewController) -> UIViewController? {
         
+        if let index = pages.indexOf(viewController.restorationIdentifier!) {
+            if index > 0 {
+                return viewControllerAtIndex(index - 1)
+            }
+        }
         return nil
     }
     
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+        
+        if let index = pages.indexOf(viewController.restorationIdentifier!) {
+            if index < pages.count - 1 {
+                return viewControllerAtIndex(index + 1)
+            }
+        }
         return nil
     }
     
@@ -34,6 +44,8 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         let vc = storyboard?.instantiateViewControllerWithIdentifier(pages[index])
         return vc
     }
+    
+    
     
     
     override func viewDidLoad() {
@@ -47,6 +59,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
             pageViewController.dataSource = self
             pageViewController.delegate = self
             
+            //set initial default
             pageViewController.setViewControllers([viewControllerAtIndex(0)!], direction: .Forward, animated: true, completion: nil)
             pageViewController.didMoveToParentViewController(self)
         }
