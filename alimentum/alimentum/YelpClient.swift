@@ -9,22 +9,11 @@
 import UIKit
 import OAuthSwift
 
-//
-//  YelpAPIClient.swift
-//  Yelp It Off
-//
-//  Created by David Lechón Quiñones on 18/08/15.
-//
-//
-
-import Foundation
-import OAuthSwift
-
 struct YelpAPIConsole {
-    var consumerKey = "022Wmq33pSPkH-nj6O3EOw"
-    var consumerSecret = "bBiQ5DWE_oBWS7Y-xicnEoxjzN0"
-    var accessToken = "M9j_L3YJl6uQ3UCSzztwlWIizqRyrH8q"
-    var accessTokenSecret = "a64uCV9ClVOrfADa4jlbUHvtMv8"
+    var consumerKey = Credentials().c_key
+    var consumerSecret = Credentials().c_secret
+    var accessToken = Credentials().a_Token
+    var accessTokenSecret = Credentials().a_TokenSecret
 }
 
 class YelpAPIClient: NSObject {

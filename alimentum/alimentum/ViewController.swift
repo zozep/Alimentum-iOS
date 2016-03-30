@@ -9,7 +9,6 @@
 import UIKit
 
 
-
 class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, LastPageViewControllerDelegate {
     
     var pageViewController = UIPageViewController()
@@ -23,29 +22,21 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainVC = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
         presentViewController(mainVC, animated: true, completion: nil)
-//        if let mainVC = storyboard?.instantiateViewControllerWithIdentifier("MainViewController") {
-//            let currentVC = pageViewController
-//            
-//            mainVC.view.frame = currentVC.view.frame
-//            mainVC.willMoveToParentViewController(self)
-//            addChildViewController(mainVC)
-//            
-//            transitionFromViewController(currentVC, toViewController: mainVC, duration: 1.0, options: .TransitionCrossDissolve, animations: {
-//                //
-//                }, completion: { (Bool) -> Void in
-//                    currentVC.removeFromParentViewController()
-//                    mainVC.didMoveToParentViewController(self)
-//            })
-//        }
         
+    }
+    
+    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return 3
+    }
+    
+    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return 0
     }
     
     
     
     //MARK: - ==============PAGE VIEW CONTROLLER DATASOURCE
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController
-        //current page returns UIViewController optional
-        viewController: UIViewController) -> UIViewController? {
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
         if let index = pages.indexOf(viewController.restorationIdentifier!) {
             if index > 0 {
