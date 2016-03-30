@@ -57,9 +57,7 @@
 		7C1DA9C51CAB84FB001172AA /* alimentumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = alimentumUITests.swift; sourceTree = "<group>"; };
 		7C1DA9C71CAB84FB001172AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C3CE36B1CABCD0700999A9D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7C581EC11CABE70C008B4ABB /* BusinessListingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessListingTableViewCell.swift; sourceTree = "<group>"; };
 		7C581EC21CABE70C008B4ABB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		7C581EC31CABE70C008B4ABB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7C581EC71CABF2D7008B4ABB /* LastPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastPageViewController.swift; sourceTree = "<group>"; };
 		D629BBEC30E39227DB0D6E0F /* Pods_alimentum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_alimentum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9DEBB8BB96009C5BCE1DEEF /* Pods-alimentum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-alimentum.debug.xcconfig"; path = "Pods/Target Support Files/Pods-alimentum/Pods-alimentum.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,21 +126,19 @@
 		7C1DA9A11CAB84FB001172AA /* alimentum */ = {
 			isa = PBXGroup;
 			children = (
-				7C1DA9A21CAB84FB001172AA /* AppDelegate.swift */,
+				7C1DA9AE1CAB84FB001172AA /* LaunchScreen.storyboard */,
 				7C1DA9A61CAB84FB001172AA /* FirstTime.storyboard */,
-				7C581EC71CABF2D7008B4ABB /* LastPageViewController.swift */,
-				7C3CE36B1CABCD0700999A9D /* ViewController.swift */,
-				7C581EC11CABE70C008B4ABB /* BusinessListingTableViewCell.swift */,
 				7C581EC21CABE70C008B4ABB /* Main.storyboard */,
-				7C581EC31CABE70C008B4ABB /* MainViewController.swift */,
+				7C1DA9A21CAB84FB001172AA /* AppDelegate.swift */,
+				F4AE7AEF1CABE58E00860526 /* MainViewController.swift */,
+				7C3CE36B1CABCD0700999A9D /* ViewController.swift */,
+				7C581EC71CABF2D7008B4ABB /* LastPageViewController.swift */,
 				7C1DA9AC1CAB84FB001172AA /* Assets.xcassets */,
 				F4AE7AEE1CABE58E00860526 /* BusinessListingTableViewCell.swift */,
-				F4AE7AEF1CABE58E00860526 /* MainViewController.swift */,
-				7C1DA9AE1CAB84FB001172AA /* LaunchScreen.storyboard */,
-				7C1DA9B11CAB84FB001172AA /* Info.plist */,
-				7C1DA9A91CAB84FB001172AA /* alimentum.xcdatamodeld */,
 				F48AD5341CAC1BC200BD8FF2 /* YelpClient.swift */,
 				F47F7CE21CAC4F3900A0BFBD /* Credentials.swift */,
+				7C1DA9B11CAB84FB001172AA /* Info.plist */,
+				7C1DA9A91CAB84FB001172AA /* alimentum.xcdatamodeld */,
 			);
 			path = alimentum;
 			sourceTree = "<group>";
