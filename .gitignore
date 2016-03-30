@@ -16,7 +16,7 @@ DerivedData
 *.perspectivev3
 !default.perspectivev3
 xcuserdata
-.DS_Store
+**/.DS_Store
 
 ## Other
 *.xccheckout
@@ -33,7 +33,7 @@ timeline.xctimeline
 playground.xcworkspace
 
 ## API Credentials
-Credentials.swift
+**/Credentials.swift
 
 # Swift Package Manager
 #
