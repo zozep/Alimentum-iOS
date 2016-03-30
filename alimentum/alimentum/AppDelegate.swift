@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import CoreLocation
+import OAuthSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -43,6 +45,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
+    
+    // MARK: - OAuthSwift Implementation
+    
+    func applicationHandleOpenURL(url: NSURL) {
+        if (url.host == "oauth-callback") {
+            OAuthSwift.handleOpenURL(url)
+        }
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        applicationHandleOpenURL(url)
+        return true
+    }
+    
+    @available(iOS 9.0, *)
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        applicationHandleOpenURL(url)
+        return true
+    }
+    
 
     // MARK: - Core Data stack
 

@@ -12,7 +12,6 @@ import UIKit
 
 class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
-    var pageViewController = UIPageViewController!
     let pages = ["PageOneViewController", "PageTwoViewController", "PageThreeViewController"]
 
     //Mark: PAGE VIEW CONTROLLER DATASOURCE
@@ -42,7 +41,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         if let vc = storyboard?.instantiateViewControllerWithIdentifier("MyPageViewController") {
             self.addChildViewController(vc)
             self.view.addSubview(vc.view)
-            
+            let pageViewController: UIPageViewController!
             pageViewController = vc as! UIPageViewController
             pageViewController.dataSource = self
             pageViewController.delegate = self

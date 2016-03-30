@@ -31,7 +31,7 @@ public class OAuthSwift: NSObject {
 
     // MARK: callback notification
     struct CallbackNotification {
-        static let notificationName = "OAuthSwiftCallbackNotificationName"
+        static let notificationName = "OAuthSwiftCallbackotificationName"
         static let optionsURLKey = "OAuthSwiftCallbackNotificationOptionsURLKey"
     }
 
