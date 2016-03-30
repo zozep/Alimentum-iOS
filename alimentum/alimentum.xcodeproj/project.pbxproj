@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7870D6E024EB4C386CF45FC8 /* Pods_alimentum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFDC08710E5DFC2CFBE4FD6 /* Pods_alimentum.framework */; };
 		7C1DA9A31CAB84FB001172AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1DA9A21CAB84FB001172AA /* AppDelegate.swift */; };
-		7C1DA9A81CAB84FB001172AA /* 1stTimeVisit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C1DA9A61CAB84FB001172AA /* 1stTimeVisit.storyboard */; };
+		7C1DA9A81CAB84FB001172AA /* FirstTime.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C1DA9A61CAB84FB001172AA /* FirstTime.storyboard */; };
 		7C1DA9AB1CAB84FB001172AA /* alimentum.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C1DA9A91CAB84FB001172AA /* alimentum.xcdatamodeld */; };
 		7C1DA9AD1CAB84FB001172AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C1DA9AC1CAB84FB001172AA /* Assets.xcassets */; };
 		7C1DA9B01CAB84FB001172AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C1DA9AE1CAB84FB001172AA /* LaunchScreen.storyboard */; };
 		7C1DA9BB1CAB84FB001172AA /* alimentumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1DA9BA1CAB84FB001172AA /* alimentumTests.swift */; };
 		7C1DA9C61CAB84FB001172AA /* alimentumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1DA9C51CAB84FB001172AA /* alimentumUITests.swift */; };
+		F4E6C4EB1CABD36E00B2E855 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4E6C4EA1CABD36E00B2E855 /* Main.storyboard */; };
+		F4E6C4EE1CABD41D00B2E855 /* BusinessListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6C4EC1CABD41D00B2E855 /* BusinessListingTableViewCell.swift */; };
+		F4E6C4EF1CABD41D00B2E855 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E6C4ED1CABD41D00B2E855 /* MainViewController.swift */; };
+		F4EB2487647B4F2F0BE0A9B2 /* Pods_alimentum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37BD8FD1AEA06A82643583E9 /* Pods_alimentum.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,12 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0DFDC08710E5DFC2CFBE4FD6 /* Pods_alimentum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_alimentum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		220F7670B1465C41D1D90B17 /* Pods-alimentum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-alimentum.debug.xcconfig"; path = "Pods/Target Support Files/Pods-alimentum/Pods-alimentum.debug.xcconfig"; sourceTree = "<group>"; };
-		621D5FC6D75DDE9DA5CABF42 /* Pods-alimentum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-alimentum.release.xcconfig"; path = "Pods/Target Support Files/Pods-alimentum/Pods-alimentum.release.xcconfig"; sourceTree = "<group>"; };
+		37BD8FD1AEA06A82643583E9 /* Pods_alimentum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_alimentum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C1DA99F1CAB84FB001172AA /* alimentum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alimentum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C1DA9A21CAB84FB001172AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7C1DA9A71CAB84FB001172AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/1stTimeVisit.storyboard; sourceTree = "<group>"; };
+		7C1DA9A71CAB84FB001172AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FirstTime.storyboard; sourceTree = "<group>"; };
 		7C1DA9AA1CAB84FB001172AA /* alimentum.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = alimentum.xcdatamodel; sourceTree = "<group>"; };
 		7C1DA9AC1CAB84FB001172AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C1DA9AF1CAB84FB001172AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +52,11 @@
 		7C1DA9C11CAB84FB001172AA /* alimentumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = alimentumUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C1DA9C51CAB84FB001172AA /* alimentumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = alimentumUITests.swift; sourceTree = "<group>"; };
 		7C1DA9C71CAB84FB001172AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A971AAA031013C2E14AD087A /* Pods-alimentum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-alimentum.debug.xcconfig"; path = "Pods/Target Support Files/Pods-alimentum/Pods-alimentum.debug.xcconfig"; sourceTree = "<group>"; };
+		D619180AB73917E748F0F79A /* Pods-alimentum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-alimentum.release.xcconfig"; path = "Pods/Target Support Files/Pods-alimentum/Pods-alimentum.release.xcconfig"; sourceTree = "<group>"; };
+		F4E6C4EA1CABD36E00B2E855 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F4E6C4EC1CABD41D00B2E855 /* BusinessListingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessListingTableViewCell.swift; sourceTree = "<group>"; };
+		F4E6C4ED1CABD41D00B2E855 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7870D6E024EB4C386CF45FC8 /* Pods_alimentum.framework in Frameworks */,
+				F4EB2487647B4F2F0BE0A9B2 /* Pods_alimentum.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +85,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02A7F28F5AAF8A1CDB795473 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				37BD8FD1AEA06A82643583E9 /* Pods_alimentum.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3C0B46E67EE45A3AC6014E93 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A971AAA031013C2E14AD087A /* Pods-alimentum.debug.xcconfig */,
+				D619180AB73917E748F0F79A /* Pods-alimentum.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7C1DA9961CAB84FB001172AA = {
 			isa = PBXGroup;
 			children = (
@@ -86,8 +109,8 @@
 				7C1DA9B91CAB84FB001172AA /* alimentumTests */,
 				7C1DA9C41CAB84FB001172AA /* alimentumUITests */,
 				7C1DA9A01CAB84FB001172AA /* Products */,
-				D85061D1DF0C3333FB9A9183 /* Pods */,
-				7CCFF00D9402A815C11CDB96 /* Frameworks */,
+				3C0B46E67EE45A3AC6014E93 /* Pods */,
+				02A7F28F5AAF8A1CDB795473 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,9 +128,12 @@
 			isa = PBXGroup;
 			children = (
 				7C1DA9A21CAB84FB001172AA /* AppDelegate.swift */,
-				7C1DA9A61CAB84FB001172AA /* 1stTimeVisit.storyboard */,
+				7C1DA9A61CAB84FB001172AA /* FirstTime.storyboard */,
 				7C1DA9AC1CAB84FB001172AA /* Assets.xcassets */,
+				F4E6C4EC1CABD41D00B2E855 /* BusinessListingTableViewCell.swift */,
+				F4E6C4ED1CABD41D00B2E855 /* MainViewController.swift */,
 				7C1DA9AE1CAB84FB001172AA /* LaunchScreen.storyboard */,
+				F4E6C4EA1CABD36E00B2E855 /* Main.storyboard */,
 				7C1DA9B11CAB84FB001172AA /* Info.plist */,
 				7C1DA9A91CAB84FB001172AA /* alimentum.xcdatamodeld */,
 			);
@@ -132,23 +158,6 @@
 			path = alimentumUITests;
 			sourceTree = "<group>";
 		};
-		7CCFF00D9402A815C11CDB96 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0DFDC08710E5DFC2CFBE4FD6 /* Pods_alimentum.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D85061D1DF0C3333FB9A9183 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				220F7670B1465C41D1D90B17 /* Pods-alimentum.debug.xcconfig */,
-				621D5FC6D75DDE9DA5CABF42 /* Pods-alimentum.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,12 +165,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7C1DA9CA1CAB84FB001172AA /* Build configuration list for PBXNativeTarget "alimentum" */;
 			buildPhases = (
-				3533FF15980BD1534EF93672 /* Check Pods Manifest.lock */,
+				9083B1E855E33175C864DEB0 /* 📦 Check Pods Manifest.lock */,
 				7C1DA99B1CAB84FB001172AA /* Sources */,
 				7C1DA99C1CAB84FB001172AA /* Frameworks */,
 				7C1DA99D1CAB84FB001172AA /* Resources */,
-				43F0A90CA4DD74652037C907 /* Embed Pods Frameworks */,
-				8E5575C0AF95C644A7728D90 /* Copy Pods Resources */,
+				812205E28EB23F66D7E6A591 /* 📦 Embed Pods Frameworks */,
+				3061D746ED3F9C1D128BC8D8 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,7 +268,8 @@
 			files = (
 				7C1DA9B01CAB84FB001172AA /* LaunchScreen.storyboard in Resources */,
 				7C1DA9AD1CAB84FB001172AA /* Assets.xcassets in Resources */,
-				7C1DA9A81CAB84FB001172AA /* 1stTimeVisit.storyboard in Resources */,
+				7C1DA9A81CAB84FB001172AA /* FirstTime.storyboard in Resources */,
+				F4E6C4EB1CABD36E00B2E855 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,29 +290,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3533FF15980BD1534EF93672 /* Check Pods Manifest.lock */ = {
+		3061D746ED3F9C1D128BC8D8 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-alimentum/Pods-alimentum-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		43F0A90CA4DD74652037C907 /* Embed Pods Frameworks */ = {
+		812205E28EB23F66D7E6A591 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,19 +320,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-alimentum/Pods-alimentum-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8E5575C0AF95C644A7728D90 /* Copy Pods Resources */ = {
+		9083B1E855E33175C864DEB0 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-alimentum/Pods-alimentum-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -334,6 +344,8 @@
 			files = (
 				7C1DA9A31CAB84FB001172AA /* AppDelegate.swift in Sources */,
 				7C1DA9AB1CAB84FB001172AA /* alimentum.xcdatamodeld in Sources */,
+				F4E6C4EE1CABD41D00B2E855 /* BusinessListingTableViewCell.swift in Sources */,
+				F4E6C4EF1CABD41D00B2E855 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,12 +381,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7C1DA9A61CAB84FB001172AA /* 1stTimeVisit.storyboard */ = {
+		7C1DA9A61CAB84FB001172AA /* FirstTime.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				7C1DA9A71CAB84FB001172AA /* Base */,
 			);
-			name = 1stTimeVisit.storyboard;
+			name = FirstTime.storyboard;
 			sourceTree = "<group>";
 		};
 		7C1DA9AE1CAB84FB001172AA /* LaunchScreen.storyboard */ = {
@@ -475,7 +487,7 @@
 		};
 		7C1DA9CB1CAB84FB001172AA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 220F7670B1465C41D1D90B17 /* Pods-alimentum.debug.xcconfig */;
+			baseConfigurationReference = A971AAA031013C2E14AD087A /* Pods-alimentum.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -490,7 +502,7 @@
 		};
 		7C1DA9CC1CAB84FB001172AA /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 621D5FC6D75DDE9DA5CABF42 /* Pods-alimentum.release.xcconfig */;
+			baseConfigurationReference = D619180AB73917E748F0F79A /* Pods-alimentum.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
