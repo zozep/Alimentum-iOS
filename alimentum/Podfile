@@ -2,6 +2,11 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'alimentum' do
+<<<<<<< HEAD
 	pod 'SwiftyJSON', '~> 2.3.2'
 	pod 'OAuthSwift', '~> 0.5.0'
+=======
+	pod "SwiftyJSON", "~> 2.3.2"
+	pod "OAuthSwift", "~> 0.5.0"
+>>>>>>> ee7aa0f2c6a6c21535ee8e688913572d478ee5e5
 end
