@@ -10,29 +10,80 @@ import UIKit
 
 
 
-class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, LastPageViewControllerDelegate {
     
+<<<<<<< HEAD
+=======
+    var pageViewController = UIPageViewController()
+>>>>>>> 951c434be87f3c10bcc7ba3c6df146401aaf292a
     let pages = ["PageOneViewController", "PageTwoViewController", "PageThreeViewController"]
-
-    //Mark: PAGE VIEW CONTROLLER DATASOURCE
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController
+    
+    
+    //MARK: - =============LastPageViewControllerDelegate Methods
+    func lastPageDone() {
+        print("View Controller says Last Page done")
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainVC = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
+        presentViewController(mainVC, animated: true, completion: nil)
+//        if let mainVC = storyboard?.instantiateViewControllerWithIdentifier("MainViewController") {
+//            let currentVC = pageViewController
+//            
+//            mainVC.view.frame = currentVC.view.frame
+//            mainVC.willMoveToParentViewController(self)
+//            addChildViewController(mainVC)
+//            
+//            transitionFromViewController(currentVC, toViewController: mainVC, duration: 1.0, options: .TransitionCrossDissolve, animations: {
+//                //
+//                }, completion: { (Bool) -> Void in
+//                    currentVC.removeFromParentViewController()
+//                    mainVC.didMoveToParentViewController(self)
+//            })
+//        }
+        
+    }
+    
+    
+    
+    //MARK: - ==============PAGE VIEW CONTROLLER DATASOURCE
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController
         //current page returns UIViewController optional
         viewController: UIViewController) -> UIViewController? {
         
+        if let index = pages.indexOf(viewController.restorationIdentifier!) {
+            if index > 0 {
+                return viewControllerAtIndex(index - 1)
+            }
+        }
         return nil
     }
+    
     
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+        
+        if let index = pages.indexOf(viewController.restorationIdentifier!) {
+            if index < pages.count - 1 {
+                return viewControllerAtIndex(index + 1)
+            }
+        }
         return nil
     }
+    
+    
     
     
     func viewControllerAtIndex(index: Int) -> UIViewController? {
         let vc = storyboard?.instantiateViewControllerWithIdentifier(pages[index])
+        
+        if pages[index] == "PageThreeViewController" {
+            (vc as! LastPageViewController).delegate = self
+        }
+        
         return vc
     }
+    
+    
     
     
     override func viewDidLoad() {
@@ -46,6 +97,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
             pageViewController.dataSource = self
             pageViewController.delegate = self
             
+            //set initial default
             pageViewController.setViewControllers([viewControllerAtIndex(0)!], direction: .Forward, animated: true, completion: nil)
             pageViewController.didMoveToParentViewController(self)
         }

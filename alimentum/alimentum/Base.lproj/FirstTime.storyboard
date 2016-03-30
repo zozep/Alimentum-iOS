@@ -49,17 +49,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yfw-Ij-HSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1405" y="-3083"/>
+            <point key="canvasLocation" x="-1508" y="-3083"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="ZIF-gv-N8e">
             <objects>
-                <pageViewController storyboardIdentifier="MyPageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="vds-Bn-eNu" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="MyPageViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="vds-Bn-eNu" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uuO-2e-tkR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1820" y="-3083"/>
+            <point key="canvasLocation" x="-1849" y="-3083"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="dj8-4n-hSY">
@@ -86,12 +86,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Roh-zz-vcm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-942" y="-3083"/>
+            <point key="canvasLocation" x="-1162" y="-3083"/>
         </scene>
-        <!--View Controller-->
+        <!--MainViewController-->
+        <scene sceneID="CQI-on-Qfg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" bundleIdentifier="com.joseph.alimentum" referencedIdentifier="MainViewController" id="oZm-jm-Huc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c8w-vY-uUO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1090.5" y="-2647"/>
+        </scene>
+        <!--Last Page View Controller-->
         <scene sceneID="N5q-aa-1Ia">
             <objects>
-                <viewController storyboardIdentifier="PageThreeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ppo-fW-8cU" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageThreeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ppo-fW-8cU" customClass="LastPageViewController" customModule="alimentum" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="258-dB-E8E"/>
                         <viewControllerLayoutGuide type="bottom" id="gM5-Wa-wH5"/>
@@ -106,6 +114,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQS-j1-TxE">
+                                <rect key="frame" x="137" y="395" width="47" height="48"/>
+                                <state key="normal" title="GO!"/>
+                                <connections>
+                                    <action selector="goButtonClicked:" destination="ppo-fW-8cU" eventType="touchUpInside" id="WGs-jW-hm5"/>
+                                    <segue destination="oZm-jm-Huc" kind="show" id="PLa-RW-e2l"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -113,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WNd-Kl-oes" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-496" y="-3083"/>
+            <point key="canvasLocation" x="-812" y="-3083"/>
         </scene>
     </scenes>
 </document>

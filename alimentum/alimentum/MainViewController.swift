@@ -11,7 +11,11 @@ import OAuthSwift
 import SwiftyJSON
 import CoreLocation
 
+<<<<<<< HEAD
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
+=======
+class MainViewController: UIViewController, UITableViewDelegate {
+>>>>>>> 951c434be87f3c10bcc7ba3c6df146401aaf292a
 
     @IBOutlet weak var tableView: UITableView!
     let apiConsoleInfo = YelpAPIConsole()
