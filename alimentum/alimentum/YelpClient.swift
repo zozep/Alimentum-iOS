@@ -18,7 +18,7 @@ struct YelpAPIConsole {
 
 class YelpAPIClient: NSObject {
     
-    let APIBaseUrl = "https://api.yelp.com/v2/"
+    let APIBaseUrl = "https://api.yelp.com/v2"
     let clientOAuth: OAuthSwiftClient?
     let apiConsoleInfo: YelpAPIConsole
     
@@ -52,7 +52,7 @@ class YelpAPIClient: NSObject {
      */
     
     func searchPlacesWithParameters(searchParameters: Dictionary<String, String>, successSearch: (data: NSData, response: NSHTTPURLResponse) -> Void, failureSearch: (error: NSError) -> Void) {
-        let searchUrl = APIBaseUrl + "search/"
+        let searchUrl = APIBaseUrl + "/search"
         clientOAuth!.get(searchUrl, parameters: searchParameters, success: successSearch, failure: failureSearch)
     }
 }
