@@ -27,13 +27,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     let apiConsoleInfo = YelpAPIConsole()
     let client = YelpAPIClient()
     var apiSearchTerm: NSString!
-    var apiResults: NSArray!
     
     /* Define variables to be used for CoreLocation functionality */
     let locationManager = CLLocationManager()
     var locationStatus : NSString = "Not Started" // String updated based on location/privacy settings of User
     var userCurrentLocation: String! // Variable to store current location in form of City,State,ZIP,Country for API call
     let reverseGeolocation = CLGeocoder() // Set CoreLocationGeoCoder to var reverseGeolocation. This is not the only use of CoreLocationGeoCoder, but this is the only use we will be getting from it.
+    
+    /* Define variabled to be assigned to returned values from API GET request */
+    var businessList: NSArray = []
+    var amtOfBusinessesAvailable: Int!
     
     
     
@@ -52,21 +55,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    
-    override func viewDidAppear(animated: Bool) {
-
-        /* Once main view has appeared, check if user has enabled location services on their device */
-        if CLLocationManager.locationServicesEnabled() == false {
-            
-            showAlert() // If user has location services disabled, show UIAlertView described below in func showAlert
-            
-        } else {
-            // If user has location services enabled, request use of current location while app is in foreground (hence 'requestWhenInUse')
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        }
-        
+    override func viewWillAppear(animated: Bool) {
+        getUserLocation()
     }
 
     
@@ -84,11 +74,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch self.json.type {
-            case Type.Array, Type.Dictionary:
-                return self.json.count
-            default:
-                return 1
+        if businessList.count > 0 {
+            print(businessList.count)
+            return businessList.count
+        }
+        else {
+            print(businessList.count)
+            return 1
         }
     }
     
@@ -97,8 +89,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCellWithIdentifier("businessCellIdentifier", forIndexPath: indexPath) as! BusinessListingTableViewCell
         
         cell.address.text = "123 Broadway St. Bellevue, WA 98004"
-        cell.businessName.text = "Mom and Pop Shop"
-        cell.phoneNumber.text = "1-800-FUCK-OFF"
+        cell.businessName.text = "Business Name"
+        cell.phoneNumber.text = "1-800-BUSI-NES"
         cell.rating.text = "Mad stars bruh"
         cell.businessPic.image = nil
         return cell
@@ -182,13 +174,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     @IBAction func sortByDelivery(sender: UIButton) {
-        print("Data count: \(apiResults.count)")
-        for item in apiResults {
-            let obj = item as! NSDictionary
-            for (key, value) in obj {
-                print("Property: \"\(key as! String)\"")
-                print("Values?: \"\(value as! String)\"")
-            }
+        print("Data count: \(businessList.count)")
+        for value in businessList {
+            print(value.count)
+            print(value)
         }
 //MARK: - Current WIP: working with API response data to display on main tableView
         if sender.titleLabel?.text == "Delivery Only" {
@@ -214,13 +203,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 "radius_filter": "8046.72",
                 "category_filter": "food",
                 "sort": "0",
-                "limit": "1",
+                "limit": "5",
                 "open_now": "3857"
             ], successSearch: { (data, response) -> Void in
                 do {
                     let result = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-                    print(result)
-                    self.apiResults = result["data"] as! NSArray
+                    self.businessList = result["businesses"]! as! NSArray
+                    self.amtOfBusinessesAvailable = result["total"]! as! Int
+                    self.tableView.reloadData()
                 } catch let error as NSError {
                     print(error)
                 }
@@ -239,6 +229,23 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
         }))
         showViewController(alert, sender: self)
+    }
+    
+    func getUserLocation() {
+        /* Once main view has appeared, check if user has enabled location services on their device */
+        if CLLocationManager.locationServicesEnabled() == false {
+            print("hello no location")
+            showAlert() // If user has location services disabled, show UIAlertView described below in func showAlert
+            
+        } else {
+            print("hello location")
+            // If user has location services enabled, request use of current location while app is in foreground (hence 'requestWhenInUse')
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestLocation()
+        }
+
     }
 
 

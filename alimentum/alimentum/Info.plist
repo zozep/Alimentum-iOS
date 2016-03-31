@@ -39,10 +39,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>NSLocationUsageDescription</key>
-	<string>We need your location to get you food!</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This application would like to use your location.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>We need your location to get you food!</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This application requires the use of your current location to function.</string>
 	<key>UILaunchStoryboardName</key>

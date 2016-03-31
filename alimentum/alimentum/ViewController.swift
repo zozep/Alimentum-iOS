@@ -18,9 +18,9 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     //MARK: - =============LastPageViewControllerDelegate Methods
     func lastPageDone() {
         print("View Controller says Last Page done")
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainVC = storyboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
+        let mainAppStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainVC = mainAppStoryboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
+        mainVC.getUserLocation()
         presentViewController(mainVC, animated: true, completion: nil)
         
     }
