@@ -83,10 +83,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch self.json.type {
-        case Type.Array, Type.Dictionary:
-            return self.json.count
-        default:
-            return 1
+            case Type.Array, Type.Dictionary:
+                return self.json.count
+            default:
+                return 1
         }
     }
     
