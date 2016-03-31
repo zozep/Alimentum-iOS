@@ -17,7 +17,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 //MARK: - Define variables to be used throughout app
     
     /* View Components */
-    @IBOutlet weak var deliveryOnlyButtonClicked: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -27,12 +26,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     /* API Implementation (see YelpClient.swift) */
     let apiConsoleInfo = YelpAPIConsole()
     let client = YelpAPIClient()
+    var apiSearchTerm: NSString!
+    var apiResults: NSArray!
     
     /* Define variables to be used for CoreLocation functionality */
     let locationManager = CLLocationManager()
     var locationStatus : NSString = "Not Started" // String updated based on location/privacy settings of User
     var userCurrentLocation: String! // Variable to store current location in form of City,State,ZIP,Country for API call
     let reverseGeolocation = CLGeocoder() // Set CoreLocationGeoCoder to var reverseGeolocation. This is not the only use of CoreLocationGeoCoder, but this is the only use we will be getting from it.
+    
     
     
 //MARK: - Default functions that are a part of UIViewController
@@ -162,7 +164,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         locationManager.stopUpdatingLocation()
         
         //Call function that sends API request, passing in the var userCurrentLocation = "City,State,ZIP,Country"
-        getFoodByMe(userCurrentLocation)
+        apiSearchTerm = "all"
+        getFoodNearMe(userCurrentLocation, term: apiSearchTerm)
         
     }
     
@@ -178,11 +181,49 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 //MARK: - Custom Functions
     
     
-    /* Function to make API request, passing in users location for parameter "location" */
-    func getFoodByMe(location: String){
+    @IBAction func sortByDelivery(sender: UIButton) {
+        print("Data count: \(apiResults.count)")
+        for item in apiResults {
+            let obj = item as! NSDictionary
+            for (key, value) in obj {
+                print("Property: \"\(key as! String)\"")
+                print("Values?: \"\(value as! String)\"")
+            }
+        }
+//MARK: - Current WIP: working with API response data to display on main tableView
+        if sender.titleLabel?.text == "Delivery Only" {
+            self.apiSearchTerm = "delivery"
+            sender.setTitle("Show All", forState: .Normal)
+//            getFoodNearMe(userCurrentLocation, term: apiSearchTerm)
+        } else if sender.titleLabel?.text == "Show All"{
+            self.apiSearchTerm = "all"
+            sender.setTitle("Delivery Only", forState: .Normal)
+//            getFoodNearMe(userCurrentLocation, term: apiSearchTerm)
+        }
         
-        client.searchPlacesWithParameters(["location": "\(location)", "category_filter": "burgers", "radius_filter": "10000", "sort": "0", "limit": "5"], successSearch: { (data, response) -> Void in
-            print(NSString(data: data, encoding: NSUTF8StringEncoding))
+        
+    }
+    /* Function to make API request, passing in users location for parameter "location", 
+     term updates based on 'delivery' or 'all' */
+    func getFoodNearMe(location: String, term: NSString){
+        
+        client.searchPlacesWithParameters(
+            [
+                "term": "\(term)",
+                "location": "\(location)",
+                "radius_filter": "8046.72",
+                "category_filter": "food",
+                "sort": "0",
+                "limit": "1",
+                "open_now": "3857"
+            ], successSearch: { (data, response) -> Void in
+                do {
+                    let result = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+                    print(result)
+                    self.apiResults = result["data"] as! NSArray
+                } catch let error as NSError {
+                    print(error)
+                }
         }) { (error) -> Void in
             print(error)
         }
