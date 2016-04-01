@@ -65,7 +65,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.22809466940000001" green="0.4670712454" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="qkx-KC-5hH" firstAttribute="leading" secondItem="sYE-hv-yzL" secondAttribute="leadingMargin" id="1Xx-aq-p6S"/>
                             <constraint firstItem="x7h-0M-hrl" firstAttribute="top" secondItem="bj1-jw-6Yx" secondAttribute="bottom" id="FtH-14-Eb0"/>
@@ -145,7 +145,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eud-n4-FKL">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eud-n4-FKL">
                                 <rect key="frame" x="35" y="93" width="530" height="259"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GdU-pW-eE5">
@@ -154,17 +154,10 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwq-kY-bJu">
                                         <rect key="frame" x="0.0" y="0.0" width="544" height="30"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="green">
+                                            <fragment content="shows all restaurants that are open">
                                                 <attributes>
-                                                    <color key="NSColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <font key="NSFont" size="25" name="HelveticaNeue-Bold"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content=": delivers">
-                                                <attributes>
-                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="25" name="HelveticaNeue-Thin"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
@@ -174,17 +167,10 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fv8-wS-a5Q">
                                         <rect key="frame" x="0.0" y="30" width="544" height="30"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="red">
+                                            <fragment content="shows open restaurants that deliver">
                                                 <attributes>
-                                                    <color key="NSColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                     <font key="NSFont" size="25" name="HelveticaNeue-Bold"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content=": does not deliver">
-                                                <attributes>
-                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="25" name="HelveticaNeue-Thin"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
@@ -210,8 +196,8 @@
                                 <attributedString key="attributedText">
                                     <fragment content="alimentum">
                                         <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="36" name="HelveticaNeue-Italic"/>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="36" name="HelveticaNeue-Thin"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -219,10 +205,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.22809466940000001" green="0.4670712454" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.086274509803921567" green="0.62745098039215685" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="GdU-pW-eE5" firstAttribute="top" secondItem="Eud-n4-FKL" secondAttribute="bottom" constant="55" id="09m-HS-bBa"/>
                             <constraint firstItem="GdU-pW-eE5" firstAttribute="top" secondItem="Eud-n4-FKL" secondAttribute="bottom" constant="55" id="4J6-Sp-gCK"/>
+                            <constraint firstItem="Eud-n4-FKL" firstAttribute="top" secondItem="H1c-kr-JXy" secondAttribute="bottom" constant="30" id="4r8-8y-hAr"/>
                             <constraint firstItem="H1c-kr-JXy" firstAttribute="leading" secondItem="ZYg-dW-mSd" secondAttribute="leadingMargin" id="8es-rG-VDg"/>
                             <constraint firstItem="H1c-kr-JXy" firstAttribute="top" secondItem="4Va-vr-Kph" secondAttribute="bottom" id="TOv-Sh-Bgu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Eud-n4-FKL" secondAttribute="trailing" constant="15" id="UyJ-Ff-3xE"/>
@@ -277,7 +264,7 @@
                                     <segue destination="oZm-jm-Huc" kind="show" id="ywX-6B-4bj"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XXy-1o-LxR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XXy-1o-LxR">
                                 <rect key="frame" x="31" y="92" width="538" height="286"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15d-1J-NcG">
@@ -286,7 +273,7 @@
                                     <fragment content="alimentum">
                                         <attributes>
                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="36" name="HelveticaNeue-Italic"/>
+                                            <font key="NSFont" size="36" name="HelveticaNeue-Thin"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -294,11 +281,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.22809466940000001" green="0.4670712454" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="uQS-j1-TxE" firstAttribute="top" secondItem="XXy-1o-LxR" secondAttribute="bottom" constant="55" id="5BX-F5-77m"/>
                             <constraint firstItem="XXy-1o-LxR" firstAttribute="leading" secondItem="YFH-kt-JIq" secondAttribute="leadingMargin" constant="11" id="7kl-np-cxA"/>
                             <constraint firstItem="uQS-j1-TxE" firstAttribute="top" secondItem="XXy-1o-LxR" secondAttribute="bottom" constant="55" id="Gm3-Zi-hJK"/>
+                            <constraint firstItem="XXy-1o-LxR" firstAttribute="top" secondItem="15d-1J-NcG" secondAttribute="bottom" constant="29" id="MKB-Zx-8V7"/>
                             <constraint firstItem="15d-1J-NcG" firstAttribute="leading" secondItem="YFH-kt-JIq" secondAttribute="leadingMargin" id="S3v-2f-ycR"/>
                             <constraint firstItem="uQS-j1-TxE" firstAttribute="leading" secondItem="YFH-kt-JIq" secondAttribute="leadingMargin" constant="24" id="UtN-eQ-8G3"/>
                             <constraint firstItem="gM5-Wa-wH5" firstAttribute="top" secondItem="uQS-j1-TxE" secondAttribute="bottom" constant="113" id="W1s-2X-E2R"/>

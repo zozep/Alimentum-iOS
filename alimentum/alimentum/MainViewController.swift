@@ -129,10 +129,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 phone = "N/A"
             }
             let businessAddress = cleanReturnedAddress(dirtyAddress, city: dirtyCity)
-            cell.businessName.text = "Name: \(currentBusiness["name"]!! as! String)"
+            cell.businessName.text = "\(currentBusiness["name"]!! as! String)"
             self.phoneNumber = "\(phone)"
             print(self.phoneNumber)
-            cell.phoneNumber.text = "Phone #: \(phone)"
+            cell.phoneNumber.text = "Phone: \(phone)"
             cell.address.text = "Address: \n\(businessAddress)"
             cell.rating.text = "Yelp! Rating: \(String(currentBusiness["rating"]!! as! Int))"
         }
@@ -140,7 +140,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
 //MARK: - Phone Call function
-
+    
     @IBAction func phoneCallButton(sender: AnyObject) {
         let url = NSURL(string: "tel://\(phoneNumber)")
         if let url = url {
@@ -320,7 +320,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             for a in cells {
                 let cell: UITableViewCell = a as UITableViewCell
-                UIView.animateWithDuration(1.5, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .TransitionFlipFromTop, animations: {
+                UIView.animateWithDuration(1.3, delay: 0.02 * Double(index), usingSpringWithDamping: 2.0, initialSpringVelocity: 0, options: .TransitionFlipFromTop, animations: {
                     cell.transform = CGAffineTransformMakeTranslation(0, 0);
                     }, completion: nil)
                 
