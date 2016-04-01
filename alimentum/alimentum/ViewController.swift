@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 
 class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, LastPageViewControllerDelegate {
@@ -20,6 +21,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         print("View Controller says Last Page done")
         let mainAppStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let mainVC = mainAppStoryboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
+        mainVC.viewWillAppear(true)
         mainVC.getUserLocation()
         print("pre mainview appear")
         presentViewController(mainVC, animated: true, completion: nil)

@@ -24,29 +24,25 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJu-yO-jIx">
-                                <rect key="frame" x="489" y="52" width="91" height="30"/>
-                                <state key="normal" title="Delivery Only"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DUd-EP-f7c">
+                                <rect key="frame" x="199" y="52" width="201" height="29"/>
+                                <segments>
+                                    <segment title="Show All"/>
+                                    <segment title="Show Delivery"/>
+                                </segments>
                                 <connections>
-                                    <action selector="sortByDelivery:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5yn-Ip-aKB"/>
+                                    <action selector="indexChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Kyd-cS-Arv"/>
                                 </connections>
-                            </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="E13-jz-FDe">
-                                <rect key="frame" x="275" y="275" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="67x-YK-TzM"/>
-                                    <constraint firstAttribute="width" constant="50" id="C7p-TI-0aX"/>
-                                </constraints>
-                            </activityIndicatorView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="160" sectionHeaderHeight="3" sectionFooterHeight="3" translatesAutoresizingMaskIntoConstraints="NO" id="j8J-5a-B0X">
-                                <rect key="frame" x="20" y="90" width="560" height="510"/>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="160" sectionHeaderHeight="3" sectionFooterHeight="3" translatesAutoresizingMaskIntoConstraints="NO" id="j8J-5a-B0X">
+                                <rect key="frame" x="20" y="88" width="560" height="512"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="businessCellIdentifier" id="1YA-TS-Kvx" customClass="BusinessListingTableViewCell" customModule="alimentum" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="3" width="560" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1YA-TS-Kvx" id="Ri9-Dc-2Sc">
-                                            <rect key="frame" x="0.0" y="0.0" width="560" height="159.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="160"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fut-Dr-cNj">
@@ -114,24 +110,29 @@ Bellevue, WA 98004</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="E13-jz-FDe">
+                                <rect key="frame" x="281" y="282" width="37" height="37"/>
+                                <color key="color" red="0.57338916156551134" green="0.15474893379661833" blue="0.66866410340314131" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="E13-jz-FDe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="BIq-E3-Zc4"/>
+                            <constraint firstItem="E13-jz-FDe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DAz-tf-F2c"/>
                             <constraint firstItem="j8J-5a-B0X" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="IoA-1b-h4B"/>
-                            <constraint firstItem="KJu-yO-jIx" firstAttribute="top" secondItem="cr9-yy-CEP" secondAttribute="bottom" constant="8" symbolic="YES" id="Iqu-f7-LaU"/>
-                            <constraint firstItem="KJu-yO-jIx" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="O3G-o2-Zwn"/>
-                            <constraint firstItem="E13-jz-FDe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RtZ-ff-8KX"/>
-                            <constraint firstItem="E13-jz-FDe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Z8V-u2-SRg"/>
+                            <constraint firstItem="DUd-EP-f7c" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ium-P6-48j"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cr9-yy-CEP" secondAttribute="trailing" id="co2-0s-CJ1"/>
                             <constraint firstItem="cr9-yy-CEP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="dPP-cO-CIR"/>
                             <constraint firstItem="j8J-5a-B0X" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="fTy-fl-F0D"/>
                             <constraint firstItem="cr9-yy-CEP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="oZp-8C-r5V"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="j8J-5a-B0X" secondAttribute="bottom" id="pp1-NF-Yyg"/>
-                            <constraint firstItem="j8J-5a-B0X" firstAttribute="top" secondItem="KJu-yO-jIx" secondAttribute="bottom" constant="8" symbolic="YES" id="zrI-Qq-wuM"/>
+                            <constraint firstItem="DUd-EP-f7c" firstAttribute="top" secondItem="cr9-yy-CEP" secondAttribute="bottom" constant="8" symbolic="YES" id="sM6-Gl-f3c"/>
+                            <constraint firstItem="j8J-5a-B0X" firstAttribute="top" secondItem="DUd-EP-f7c" secondAttribute="bottom" constant="8" symbolic="YES" id="vk8-fh-Q1j"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="loadingSpinner" destination="E13-jz-FDe" id="aOA-BI-peW"/>
+                        <outlet property="segmentControl" destination="DUd-EP-f7c" id="uQj-aC-fDa"/>
                         <outlet property="tableView" destination="j8J-5a-B0X" id="JIq-r6-iLs"/>
                     </connections>
                 </viewController>

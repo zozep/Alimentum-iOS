@@ -8,7 +8,6 @@
 
 import UIKit
 import OAuthSwift
-import SwiftyJSON
 import CoreLocation
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
@@ -19,10 +18,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     /* View Components */
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
+    @IBOutlet weak var segmentControl: UISegmentedControl!
     
     
     /* Define var locationManager as onstance of CoreLocationLocationManager (CLLocationManager) */
-    var json: JSON = JSON.null
     
     /* API Implementation (see YelpClient.swift) */
     let apiConsoleInfo = YelpAPIConsole()
@@ -59,8 +58,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestLocation()
-        defineDelegates()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100.0
+
+    }
+    
 
     
     override func didReceiveMemoryWarning() {
@@ -70,17 +77,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
 //MARK: - TableView Functions
-    
-    func defineDelegates() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100.0
-    }
+
     
     //Making separate section for each business to allow for spacing between cells
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        loadingSpinner.startAnimating()
         if businessList.count > 1 {
             print("sectionsintable \(businessList.count)")
             return businessList.count
@@ -97,16 +97,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("rowsinsection")
             return 1
         } else {
-            print(section, "sectioncount")
+            print(section, "rowsinsection")
             return 0
         }
     }
-    
-    
-    //Apply a spacing of 8 points between each cell
-//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 8
-//    }
     
     
     //Clear header for each section so that background view appears.
@@ -119,11 +113,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print("tableview")
         let cell = tableView.dequeueReusableCellWithIdentifier("businessCellIdentifier", forIndexPath: indexPath) as! BusinessListingTableViewCell
+        print("tableview cellforrow ", indexPath.section)
+        let lastSection = businessList.count-1
         if businessList.count > 0 {
             print("tableview \(indexPath.section)")
-            let lastSection = businessList.count-1
             let currentBusiness = businessList[indexPath.section]
             let dirtyCity = String(currentBusiness["location"]!!["city"]!!)
             let dirtyAddress = String(currentBusiness["location"]!!["display_address"]!!)
@@ -139,10 +133,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.phoneNumber.text = "Phone #: \(phone)"
             cell.address.text = "Address: \n\(businessAddress)"
             cell.rating.text = "Yelp! Rating: \(String(currentBusiness["rating"]!! as! Int))"
-            if indexPath.section == lastSection {
-                print(lastSection)
-                print(indexPath.section)
-            }
+        }
+        if indexPath.section == lastSection {
+            print("indexPath \(indexPath.section), lasSection \(lastSection)")
         }
         
         return cell
@@ -224,28 +217,26 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
 //MARK: - Custom Functions
     
-    
-    @IBAction func sortByDelivery(sender: UIButton) {
-        print("sortByDelivery Data count: \(businessList.count)")
-//MARK: - Current WIP: working with API response data to display on main tableView
-        if sender.titleLabel?.text == "Delivery Only" {
-            self.apiSearchTerm = "delivery"
-            sender.setTitle("Show All", forState: .Normal)
-            getFoodNearMe(userCurrentLocation, term: apiSearchTerm)
-        } else if sender.titleLabel?.text == "Show All"{
+
+    @IBAction func indexChanged(sender: UISegmentedControl) {
+        
+        switch segmentControl.selectedSegmentIndex {
+        case 0:
             self.apiSearchTerm = "all"
-            sender.setTitle("Delivery Only", forState: .Normal)
-            getFoodNearMe(userCurrentLocation, term: apiSearchTerm)
+        case 1:
+            self.apiSearchTerm = "delivery"
+        default:
+            print("pooploop")
         }
+        getFoodNearMe(userCurrentLocation, term: apiSearchTerm)
         tableView.reloadData()
-        
-        
     }
     
     
     /* Function to make API request, passing in users location for parameter "location", 
      term updates based on 'delivery' or 'all' */
     func getFoodNearMe(location: String, term: NSString){
+        loadingSpinner.startAnimating()
         print("getfoodnearme")
         client.searchPlacesWithParameters(
             [
@@ -336,6 +327,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 index += 1
             }
         })
+        loadingSpinner.stopAnimating()
     }
 
 }
