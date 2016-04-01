@@ -21,6 +21,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         let mainAppStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let mainVC = mainAppStoryboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
         mainVC.getUserLocation()
+        print("pre mainview appear")
         presentViewController(mainVC, animated: true, completion: nil)
         
     }
@@ -94,5 +95,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+//    override func s
 
 }
