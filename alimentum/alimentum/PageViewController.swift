@@ -35,17 +35,17 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         dataSource = self
         delegate = self
         print("Woo?")
-        let launchedBefore = NSUserDefaults.standardUserDefaults().boolForKey("launchedBefore")
-        if launchedBefore  {
-            print("Not first launch.")
-            let mainAppStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let mainVC = mainAppStoryboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
-            dispatch_async(dispatch_get_main_queue(), {
-                self.presentViewController(mainVC, animated: true, completion: nil)
-            })
-        } else {
-            print("First launch, setting NSUserDefault.")
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "launchedBefore")
+//        let launchedBefore = NSUserDefaults.standardUserDefaults().boolForKey("launchedBefore")
+//        if launchedBefore  {
+//            print("Not first launch.")
+//            let mainAppStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let mainVC = mainAppStoryboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
+//            dispatch_async(dispatch_get_main_queue(), {
+//                self.presentViewController(mainVC, animated: true, completion: nil)
+//            })
+//        } else {
+//            print("First launch, setting NSUserDefault.")
+//            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "launchedBefore")
 
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController],
@@ -55,7 +55,15 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
         viewDelegate?.pageViewController(self, didUpdatePageCount: orderedViewControllers.count)
             }
-        }
+        initAppearance()
+        
+    }
+    
+    func initAppearance() -> Void {
+        
+        let background = CAGradientLayer().turquoiseColor()
+        background.frame = self.view.bounds
+        self.view.layer.insertSublayer(background, atIndex: 0)
     }
     
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool){
