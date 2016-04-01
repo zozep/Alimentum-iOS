@@ -141,7 +141,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.businessName.text = "\(currentBusiness["name"]!! as! String)"
             self.phoneNumber = "\(phone)"
             cell.callPhoneNumber.tag = indexPath.section
-
             cell.phoneNumber.text = "Phone: \(phone)"
             cell.address.text = "Address: \n\(businessAddress)"
             cell.rating.text = "Yelp! Rating: \(String(currentBusiness["rating"]!! as! Int))"
@@ -151,17 +150,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
 //MARK: - Phone Call function
     
-    func phoneCallButton(sender: UIButton) {
+    @IBAction func phoneCallButton(sender: UIButton) {
         print(sender.tag)
-        let numberToDial = businessList[sender.tag]["display_phone"]
-        let url = NSURL(string: "tel://\(numberToDial)")
+        let numberToDial = String(businessList[sender.tag]["display_phone"]!!)
+        let url = NSURL(string: "tel://\((numberToDial))")
         if let url = url {
             UIApplication.sharedApplication().openURL(url)
             print("making phonecalls!")
-
+            
         }
         print(url)
     }
+
     
 
     
@@ -245,10 +245,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 1:
             self.apiSearchTerm = "delivery"
         default:
-            self.apiSearchTerm = "all"
+            break
         }
         getFoodNearMe(userCurrentLocation, term: apiSearchTerm)
-        tableView.reloadData()
     }
     
     
@@ -270,9 +269,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let result = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                     self.businessList = result["businesses"]! as! NSArray
                     self.amtOfBusinessesAvailable = result["total"]! as! Int
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.animateTable()
-                    })
+                    self.animateTable()
                 } catch let error as NSError {
                     print(error)
                 }
@@ -320,6 +317,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         dispatch_async(dispatch_get_main_queue(), {
             print("dispatchAsync animatetable")
             self.tableView.reloadData()
+            self.scrollToFirstRow()
             let cells = self.tableView.visibleCells
             let tableHeight: CGFloat = self.tableView.bounds.size.height
             
@@ -338,10 +336,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 index += 1
             }
-            self.scrollToFirstRow()
         })
         loadingSpinner.stopAnimating()
     }
+    
     
     func scrollToFirstRow() {
         let indexPath = NSIndexPath(forRow: 0, inSection: 1)
@@ -349,6 +347,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
 }
+
+
+
+
+
+
+
 
 
 extension String {
