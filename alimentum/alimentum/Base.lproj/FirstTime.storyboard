@@ -18,14 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qkx-KC-5hH">
-                                <rect key="frame" x="20" y="92" width="560" height="230"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="230" id="EC2-bu-9yn"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ot4-5a-rMK">
-                                <rect key="frame" x="20" y="335" width="560" height="204"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ot4-5a-rMK">
+                                <rect key="frame" x="20" y="405" width="560" height="62"/>
                                 <attributedString key="attributedText">
                                     <fragment content="find open restaurants within  ">
                                         <attributes>
@@ -64,18 +58,21 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qkx-KC-5hH">
+                                <rect key="frame" x="20" y="92" width="560" height="258"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.086274509799999996" green="0.62745098040000002" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="qkx-KC-5hH" firstAttribute="leading" secondItem="sYE-hv-yzL" secondAttribute="leadingMargin" id="1Xx-aq-p6S"/>
                             <constraint firstItem="x7h-0M-hrl" firstAttribute="top" secondItem="bj1-jw-6Yx" secondAttribute="bottom" id="FtH-14-Eb0"/>
                             <constraint firstItem="Ot4-5a-rMK" firstAttribute="trailing" secondItem="sYE-hv-yzL" secondAttribute="trailingMargin" id="GsO-JF-mha"/>
-                            <constraint firstItem="Ot4-5a-rMK" firstAttribute="top" secondItem="qkx-KC-5hH" secondAttribute="bottom" constant="13" id="InB-h3-Ib3"/>
+                            <constraint firstItem="Ot4-5a-rMK" firstAttribute="top" secondItem="qkx-KC-5hH" secondAttribute="bottom" constant="55" id="InB-h3-Ib3"/>
                             <constraint firstItem="qkx-KC-5hH" firstAttribute="trailing" secondItem="sYE-hv-yzL" secondAttribute="trailingMargin" id="NhI-kr-7pD"/>
-                            <constraint firstItem="Ot4-5a-rMK" firstAttribute="top" secondItem="qkx-KC-5hH" secondAttribute="bottom" constant="13" id="f4j-Sz-6qw"/>
+                            <constraint firstItem="qkx-KC-5hH" firstAttribute="top" secondItem="x7h-0M-hrl" secondAttribute="bottom" constant="29" id="g0e-rt-yNL"/>
                             <constraint firstItem="x7h-0M-hrl" firstAttribute="trailing" secondItem="sYE-hv-yzL" secondAttribute="trailingMargin" id="g4M-6J-wkG"/>
                             <constraint firstItem="x7h-0M-hrl" firstAttribute="leading" secondItem="sYE-hv-yzL" secondAttribute="leadingMargin" id="irX-88-qKP"/>
-                            <constraint firstItem="C61-3c-ch9" firstAttribute="top" secondItem="Ot4-5a-rMK" secondAttribute="bottom" constant="61" id="k12-pK-IRg"/>
+                            <constraint firstItem="C61-3c-ch9" firstAttribute="top" secondItem="Ot4-5a-rMK" secondAttribute="bottom" constant="133" id="k12-pK-IRg"/>
                             <constraint firstItem="Ot4-5a-rMK" firstAttribute="leading" secondItem="sYE-hv-yzL" secondAttribute="leadingMargin" id="lM1-L3-463"/>
                         </constraints>
                     </view>
@@ -145,9 +142,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eud-n4-FKL">
-                                <rect key="frame" x="35" y="93" width="530" height="259"/>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GdU-pW-eE5">
                                 <rect key="frame" x="28" y="407" width="544" height="60"/>
                                 <subviews>
@@ -204,6 +198,9 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eud-n4-FKL">
+                                <rect key="frame" x="35" y="93" width="530" height="259"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.086274509803921567" green="0.62745098039215685" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>

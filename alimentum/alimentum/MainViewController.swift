@@ -50,6 +50,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib
+        initAppearance()
+        
+    }
+    
+    func initAppearance() -> Void {
+        
+        let background = CAGradientLayer().turquoiseColor()
+        background.frame = self.view.bounds
+        self.view.layer.insertSublayer(background, atIndex: 0)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -131,7 +140,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             let businessAddress = cleanReturnedAddress(dirtyAddress, city: dirtyCity)
             cell.businessName.text = "\(currentBusiness["name"]!! as! String)"
             self.phoneNumber = "\(phone)"
-            print(self.phoneNumber)
+            cell.callPhoneNumber.tag = indexPath.section
+
             cell.phoneNumber.text = "Phone: \(phone)"
             cell.address.text = "Address: \n\(businessAddress)"
             cell.rating.text = "Yelp! Rating: \(String(currentBusiness["rating"]!! as! Int))"
@@ -141,8 +151,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
 //MARK: - Phone Call function
     
-    @IBAction func phoneCallButton(sender: AnyObject) {
-        let url = NSURL(string: "tel://\(phoneNumber)")
+    func phoneCallButton(sender: UIButton) {
+        print(sender.tag)
+        let numberToDial = businessList[sender.tag]["display_phone"]
+        let url = NSURL(string: "tel://\(numberToDial)")
         if let url = url {
             UIApplication.sharedApplication().openURL(url)
             print("making phonecalls!")
@@ -346,5 +358,23 @@ extension String {
     
     func removeWhitespace() -> String {
         return self.replace("  ", replacement: "")
+    }
+}
+
+
+extension CAGradientLayer {
+    
+    func turquoiseColor() -> CAGradientLayer {
+        let topColor = UIColor(red: (15/255.0), green: (148/255.0), blue: (180/255.0), alpha: 1)
+        let bottomColor = UIColor(red: (84/255.0), green: (187/255.0), blue: (187/255.0), alpha: 1)
+        
+        let gradientColors: Array <AnyObject> = [topColor.CGColor, bottomColor.CGColor]
+        let gradientLocations: Array <AnyObject> = [0.0, 1.0]
+        
+        let gradientLayer: CAGradientLayer = CAGradientLayer()
+        gradientLayer.colors = gradientColors
+        gradientLayer.locations = gradientLocations as? [NSNumber]
+        
+        return gradientLayer
     }
 }
