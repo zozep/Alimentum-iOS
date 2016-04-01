@@ -16,6 +16,15 @@ class OpeningViewController: UIViewController, PageViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        initAppearance()
+        
+    }
+    
+    func initAppearance() -> Void {
+        
+        let background = CAGradientLayer().turquoiseColor()
+        background.frame = self.view.bounds
+        self.view.layer.insertSublayer(background, atIndex: 0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,3 +48,5 @@ class OpeningViewController: UIViewController, PageViewControllerDelegate {
     }
 
 }
+
+

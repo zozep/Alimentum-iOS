@@ -55,7 +55,16 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         
         viewDelegate?.pageViewController(self, didUpdatePageCount: orderedViewControllers.count)
             }
+        initAppearance()
         }
+        
+    }
+    
+    func initAppearance() -> Void {
+        
+        let background = CAGradientLayer().turquoiseColor()
+        background.frame = self.view.bounds
+        self.view.layer.insertSublayer(background, atIndex: 0)
     }
     
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool){

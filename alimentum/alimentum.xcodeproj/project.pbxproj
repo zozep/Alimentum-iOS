@@ -132,7 +132,6 @@
 				7C581EC21CABE70C008B4ABB /* Main.storyboard */,
 				7C1DA9A21CAB84FB001172AA /* AppDelegate.swift */,
 				F48E447B1CAE8DF5007C65DC /* OpeningViewController.swift */,
-				F4C6A3D51CAEF86900B79768 /* screenshot */,
 				F48E44791CAE8685007C65DC /* PageViewController.swift */,
 				F4AE7AEF1CABE58E00860526 /* MainViewController.swift */,
 				7C1DA9AC1CAB84FB001172AA /* Assets.xcassets */,
@@ -169,13 +168,6 @@
 				1ADCDA3148DA46A2D0F5B099 /* Pods-alimentum.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		F4C6A3D51CAEF86900B79768 /* screenshot */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = screenshot;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
