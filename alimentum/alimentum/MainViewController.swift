@@ -136,6 +136,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             } else {
                 print(String(currentBusiness["display_phone"]!))
                 phone = "N/A"
+                
             }
             let businessAddress = cleanReturnedAddress(dirtyAddress, city: dirtyCity)
             cell.businessName.text = "\(currentBusiness["name"]!! as! String)"
@@ -152,14 +153,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func phoneCallButton(sender: UIButton) {
         print(sender.tag)
-        let numberToDial = String(businessList[sender.tag]["display_phone"]!!)
-        let url = NSURL(string: "tel://\((numberToDial))")
-        if let url = url {
-            UIApplication.sharedApplication().openURL(url)
-            print("making phonecalls!")
-            
+        if let numberToDial = businessList[sender.tag]["display_phone"]! as? String {
+            let url = NSURL(string: "tel://\((numberToDial))")
+            if let url = url {
+                UIApplication.sharedApplication().openURL(url)
+                print("making phonecalls!")
+                
+            }
+            print(url)
+        } else {
+            showNilPhoneAlert()
         }
-        print(url)
     }
 
     
@@ -281,7 +285,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     /* This alert will be displayed if user does not have Location Services enabled. Will also direct them to their settings page so that they may turn it on */
-    func showAlert() {
+    func showLocationAlert() {
         let alert = UIAlertController(title: "Location Error", message: "Our application required the use of your location. Please check that Settings>Privacy>Location Services is set to 'ON'.", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (alert) in
             UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
@@ -289,11 +293,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         showViewController(alert, sender: self)
     }
     
+    func showNilPhoneAlert() {
+        let alert = UIAlertController(title: "No Number Listed", message: "Sorry, this business does not have a valid number listed! 😥", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
+        showViewController(alert, sender: self)
+    }
+    
+    
     func getUserLocation() {
         print("getuserlocation")
         /* Once main view has appeared, check if user has enabled location services on their device */
         if CLLocationManager.locationServicesEnabled() == false {
-            showAlert() // If user has location services disabled, show UIAlertView described below in func showAlert
+            showLocationAlert() // If user has location services disabled, show UIAlertView described below in func showAlert
             
         } else {
             locationManager.requestWhenInUseAuthorization()
