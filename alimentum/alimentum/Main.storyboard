@@ -55,11 +55,15 @@
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Phone #" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1r-7d-h41">
+                                                        <label opaque="NO" contentMode="left" text="Phone #" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1r-7d-h41">
                                                             <rect key="frame" x="0.0" y="40" width="528" height="18"/>
+                                                            <gestureRecognizers/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
+                                                            <connections>
+                                                                <outletCollection property="gestureRecognizers" destination="1XP-qz-2k9" appends="YES" id="bEM-w7-lTS"/>
+                                                            </connections>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiV-iS-MEt">
                                                             <rect key="frame" x="0.0" y="66" width="528" height="36"/>
@@ -111,7 +115,7 @@ Bellevue, WA 98004</string>
                                 </prototypes>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="E13-jz-FDe">
-                                <rect key="frame" x="287.5" y="287.5" width="25" height="25"/>
+                                <rect key="frame" x="288" y="288" width="25" height="25"/>
                                 <color key="backgroundColor" white="1" alpha="0.69999999999999996" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="1qm-dQ-uL3"/>
@@ -142,6 +146,11 @@ Bellevue, WA 98004</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="1XP-qz-2k9">
+                    <connections>
+                        <action selector="phoneCallButton:" destination="BYZ-38-t0r" id="OYV-JD-N94"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="328" y="604"/>
         </scene>

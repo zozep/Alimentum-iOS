@@ -21,7 +21,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
-    
     /* Define var locationManager as onstance of CoreLocationLocationManager (CLLocationManager) */
     
     /* API Implementation (see YelpClient.swift) */
@@ -41,7 +40,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     /* Define variabled to be assigned to returned values from API GET request */
     var businessList: NSArray = []
     var amtOfBusinessesAvailable: Int!
-    
+    var phoneNumber = String()
+
     
     
 //MARK: - Default functions that are a part of UIViewController
@@ -130,6 +130,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             let businessAddress = cleanReturnedAddress(dirtyAddress, city: dirtyCity)
             cell.businessName.text = "Name: \(currentBusiness["name"]!! as! String)"
+            self.phoneNumber = "\(phone)"
+            print(self.phoneNumber)
             cell.phoneNumber.text = "Phone #: \(phone)"
             cell.address.text = "Address: \n\(businessAddress)"
             cell.rating.text = "Yelp! Rating: \(String(currentBusiness["rating"]!! as! Int))"
@@ -137,7 +139,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+//MARK: - Phone Call function
 
+    @IBAction func phoneCallButton(sender: AnyObject) {
+        let url = NSURL(string: "tel://\(phoneNumber)")
+        if let url = url {
+            UIApplication.sharedApplication().openURL(url)
+            print("making phonecalls!")
+
+        }
+        print(url)
+    }
+    
+
+    
 //MARK: - CoreLocation Functions
     
     
@@ -238,7 +253,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 "sort": "0",
                 "actionlinks" : "false",
                 "limit" : "10"
-//                "open_now": "3857"
             ], successSearch: { (data, response) -> Void in
                 do {
                     let result = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
