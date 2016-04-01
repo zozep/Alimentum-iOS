@@ -14,11 +14,11 @@
 		7C1DA9B01CAB84FB001172AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C1DA9AE1CAB84FB001172AA /* LaunchScreen.storyboard */; };
 		7C1DA9BB1CAB84FB001172AA /* alimentumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1DA9BA1CAB84FB001172AA /* alimentumTests.swift */; };
 		7C1DA9C61CAB84FB001172AA /* alimentumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1DA9C51CAB84FB001172AA /* alimentumUITests.swift */; };
-		7C3CE36C1CABCD0700999A9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3CE36B1CABCD0700999A9D /* ViewController.swift */; };
 		A0E90DD0EC56F9C8190EF7B6 /* Pods_alimentum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D629BBEC30E39227DB0D6E0F /* Pods_alimentum.framework */; };
-		F40F81A31CAC529E0072A1A8 /* LastPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C581EC71CABF2D7008B4ABB /* LastPageViewController.swift */; };
 		F40F81A41CAC536F0072A1A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C581EC21CABE70C008B4ABB /* Main.storyboard */; };
 		F48AD5351CAC1BC200BD8FF2 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48AD5341CAC1BC200BD8FF2 /* YelpClient.swift */; };
+		F48E447A1CAE8685007C65DC /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E44791CAE8685007C65DC /* PageViewController.swift */; };
+		F48E447C1CAE8DF5007C65DC /* OpeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E447B1CAE8DF5007C65DC /* OpeningViewController.swift */; };
 		F496F0141CADBEC600B60CA7 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = F496F0131CADBEC600B60CA7 /* Credentials.swift */; };
 		F4AE7AF01CABE58E00860526 /* BusinessListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AE7AEE1CABE58E00860526 /* BusinessListingTableViewCell.swift */; };
 		F4AE7AF11CABE58E00860526 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AE7AEF1CABE58E00860526 /* MainViewController.swift */; };
@@ -56,12 +56,12 @@
 		7C1DA9C11CAB84FB001172AA /* alimentumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = alimentumUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C1DA9C51CAB84FB001172AA /* alimentumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = alimentumUITests.swift; sourceTree = "<group>"; };
 		7C1DA9C71CAB84FB001172AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7C3CE36B1CABCD0700999A9D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7C581EC21CABE70C008B4ABB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		7C581EC71CABF2D7008B4ABB /* LastPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastPageViewController.swift; sourceTree = "<group>"; };
 		D629BBEC30E39227DB0D6E0F /* Pods_alimentum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_alimentum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9DEBB8BB96009C5BCE1DEEF /* Pods-alimentum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-alimentum.debug.xcconfig"; path = "Pods/Target Support Files/Pods-alimentum/Pods-alimentum.debug.xcconfig"; sourceTree = "<group>"; };
 		F48AD5341CAC1BC200BD8FF2 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
+		F48E44791CAE8685007C65DC /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		F48E447B1CAE8DF5007C65DC /* OpeningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpeningViewController.swift; sourceTree = "<group>"; };
 		F496F0131CADBEC600B60CA7 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		F4AE7AEE1CABE58E00860526 /* BusinessListingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessListingTableViewCell.swift; sourceTree = "<group>"; };
 		F4AE7AEF1CABE58E00860526 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -130,9 +130,9 @@
 				7C1DA9A61CAB84FB001172AA /* FirstTime.storyboard */,
 				7C581EC21CABE70C008B4ABB /* Main.storyboard */,
 				7C1DA9A21CAB84FB001172AA /* AppDelegate.swift */,
+				F48E447B1CAE8DF5007C65DC /* OpeningViewController.swift */,
+				F48E44791CAE8685007C65DC /* PageViewController.swift */,
 				F4AE7AEF1CABE58E00860526 /* MainViewController.swift */,
-				7C3CE36B1CABCD0700999A9D /* ViewController.swift */,
-				7C581EC71CABF2D7008B4ABB /* LastPageViewController.swift */,
 				7C1DA9AC1CAB84FB001172AA /* Assets.xcassets */,
 				F4AE7AEE1CABE58E00860526 /* BusinessListingTableViewCell.swift */,
 				F48AD5341CAC1BC200BD8FF2 /* YelpClient.swift */,
@@ -354,14 +354,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C3CE36C1CABCD0700999A9D /* ViewController.swift in Sources */,
+				F48E447C1CAE8DF5007C65DC /* OpeningViewController.swift in Sources */,
 				7C1DA9A31CAB84FB001172AA /* AppDelegate.swift in Sources */,
 				F4AE7AF01CABE58E00860526 /* BusinessListingTableViewCell.swift in Sources */,
 				F496F0141CADBEC600B60CA7 /* Credentials.swift in Sources */,
 				7C1DA9AB1CAB84FB001172AA /* alimentum.xcdatamodeld in Sources */,
 				F48AD5351CAC1BC200BD8FF2 /* YelpClient.swift in Sources */,
+				F48E447A1CAE8685007C65DC /* PageViewController.swift in Sources */,
 				F4AE7AF11CABE58E00860526 /* MainViewController.swift in Sources */,
-				F40F81A31CAC529E0072A1A8 /* LastPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

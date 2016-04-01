@@ -9,6 +9,7 @@
 import UIKit
 import OAuthSwift
 import CoreLocation
+import MapKit
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 
@@ -58,6 +59,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestLocation()
+        loadingSpinner.layer.cornerRadius = 2.5
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -93,7 +95,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //Each section should only have one row, for the one business it will hold
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section > 1 {
+        if section > 0 {
             print("rowsinsection")
             return 1
         } else {
@@ -115,9 +117,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("businessCellIdentifier", forIndexPath: indexPath) as! BusinessListingTableViewCell
         print("tableview cellforrow ", indexPath.section)
-        let lastSection = businessList.count-1
         if businessList.count > 0 {
-            print("tableview \(indexPath.section)")
             let currentBusiness = businessList[indexPath.section]
             let dirtyCity = String(currentBusiness["location"]!!["city"]!!)
             let dirtyAddress = String(currentBusiness["location"]!!["display_address"]!!)
@@ -134,10 +134,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.address.text = "Address: \n\(businessAddress)"
             cell.rating.text = "Yelp! Rating: \(String(currentBusiness["rating"]!! as! Int))"
         }
-        if indexPath.section == lastSection {
-            print("indexPath \(indexPath.section), lasSection \(lastSection)")
-        }
-        
         return cell
     }
     
@@ -147,7 +143,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     /* Simply checks to see if user has provided us with location access, then prints to log what type of accesss we have been granted */
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        print("locationmanager access check")
         var shouldIAllow = false
         
         switch status {
@@ -174,7 +169,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     /* Function is a required delegate method (this viewController conforms to the CLLocationManagerDelegate by including this function)
     that is called whenever the user's location is updated. Defaults to updating every second */
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("reversegeocode")
         //Throw it in reverse.
         reverseGeolocation.reverseGeocodeLocation(manager.location!) { (placemarks, error) in
             if (error != nil) {
@@ -194,7 +188,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func displayLocationInfo(placemark: CLPlacemark) {
         //Set var usercurrentLocation to the returned values from successful reverseGeolocation.
         userCurrentLocation = "\(placemark.locality!),\(placemark.postalCode!),\(placemark.administrativeArea!),\(placemark.country!)"
-        print("displaylocation variable", userCurrentLocation)
         
         //stop updating location to save battery life (The location should essentially be grabbed only one time instead of updating every second)
         locationManager.stopUpdatingLocation()
@@ -209,7 +202,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     /* Function is a optional delegate method (this viewController can take advantage of this method because it conforms to the 
     CLLocationManagerDelegate protocol) */
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("ocationmanager didfail function")
         print("Error finding location: \(error.localizedDescription)")
     }
     
@@ -226,7 +218,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 1:
             self.apiSearchTerm = "delivery"
         default:
-            print("pooploop")
+            self.apiSearchTerm = "all"
         }
         getFoodNearMe(userCurrentLocation, term: apiSearchTerm)
         tableView.reloadData()
@@ -237,7 +229,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
      term updates based on 'delivery' or 'all' */
     func getFoodNearMe(location: String, term: NSString){
         loadingSpinner.startAnimating()
-        print("getfoodnearme")
         client.searchPlacesWithParameters(
             [
                 "term": "\(term)",
@@ -268,7 +259,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     /* This alert will be displayed if user does not have Location Services enabled. Will also direct them to their settings page so that they may turn it on */
     func showAlert() {
-        print("showalert")
         let alert = UIAlertController(title: "Location Error", message: "Our application required the use of your location. Please check that Settings>Privacy>Location Services is set to 'ON'.", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (alert) in
             UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
@@ -280,12 +270,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         print("getuserlocation")
         /* Once main view has appeared, check if user has enabled location services on their device */
         if CLLocationManager.locationServicesEnabled() == false {
-            print("hello no location")
             showAlert() // If user has location services disabled, show UIAlertView described below in func showAlert
             
         } else {
-            print("hello location")
-            
+            locationManager.requestWhenInUseAuthorization()
             // If user has location services enabled, request use of current location while app is in foreground (hence 'requestWhenInUse')
         }
 
@@ -293,7 +281,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func cleanReturnedAddress(str: String, city: String) -> String {
-        print("cleanreturnedaddress")
         let testThingy = String(str.characters.filter { chars.contains($0) })
         var returnString = testThingy.removeWhitespace().stringByReplacingOccurrencesOfString(",", withString: "\n")
         let insertCommaHere = returnString.endIndex.advancedBy(-10)
@@ -304,7 +291,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func animateTable() {
-        print("animateTable")
         dispatch_async(dispatch_get_main_queue(), {
             print("dispatchAsync animatetable")
             self.tableView.reloadData()
@@ -326,8 +312,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 index += 1
             }
+            self.scrollToFirstRow()
         })
         loadingSpinner.stopAnimating()
+    }
+    
+    func scrollToFirstRow() {
+        let indexPath = NSIndexPath(forRow: 0, inSection: 1)
+        self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
     }
 
 }
