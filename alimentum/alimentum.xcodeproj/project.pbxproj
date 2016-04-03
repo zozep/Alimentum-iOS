@@ -18,7 +18,7 @@
 		A0E90DD0EC56F9C8190EF7B6 /* Pods_alimentum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D629BBEC30E39227DB0D6E0F /* Pods_alimentum.framework */; };
 		F40F81A41CAC536F0072A1A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C581EC21CABE70C008B4ABB /* Main.storyboard */; };
 		F48AD5351CAC1BC200BD8FF2 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48AD5341CAC1BC200BD8FF2 /* YelpClient.swift */; };
-		F48E447A1CAE8685007C65DC /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E44791CAE8685007C65DC /* PageViewController.swift */; };
+		F48E447A1CAE8685007C65DC /* IntroPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E44791CAE8685007C65DC /* IntroPageViewController.swift */; };
 		F48E447C1CAE8DF5007C65DC /* OpeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E447B1CAE8DF5007C65DC /* OpeningViewController.swift */; };
 		F4AE7AF01CABE58E00860526 /* BusinessListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AE7AEE1CABE58E00860526 /* BusinessListingTableViewCell.swift */; };
 		F4AE7AF11CABE58E00860526 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AE7AEF1CABE58E00860526 /* MainViewController.swift */; };
@@ -61,7 +61,7 @@
 		D629BBEC30E39227DB0D6E0F /* Pods_alimentum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_alimentum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9DEBB8BB96009C5BCE1DEEF /* Pods-alimentum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-alimentum.debug.xcconfig"; path = "Pods/Target Support Files/Pods-alimentum/Pods-alimentum.debug.xcconfig"; sourceTree = "<group>"; };
 		F48AD5341CAC1BC200BD8FF2 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
-		F48E44791CAE8685007C65DC /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		F48E44791CAE8685007C65DC /* IntroPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroPageViewController.swift; sourceTree = "<group>"; };
 		F48E447B1CAE8DF5007C65DC /* OpeningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpeningViewController.swift; sourceTree = "<group>"; };
 		F4AE7AEE1CABE58E00860526 /* BusinessListingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessListingTableViewCell.swift; sourceTree = "<group>"; };
 		F4AE7AEF1CABE58E00860526 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -132,11 +132,12 @@
 				7C581EC21CABE70C008B4ABB /* Main.storyboard */,
 				7C1DA9A21CAB84FB001172AA /* AppDelegate.swift */,
 				F48E447B1CAE8DF5007C65DC /* OpeningViewController.swift */,
-				F48E44791CAE8685007C65DC /* PageViewController.swift */,
+				F48E44791CAE8685007C65DC /* IntroPageViewController.swift */,
 				F4AE7AEF1CABE58E00860526 /* MainViewController.swift */,
 				7C1DA9AC1CAB84FB001172AA /* Assets.xcassets */,
 				F4AE7AEE1CABE58E00860526 /* BusinessListingTableViewCell.swift */,
 				F48AD5341CAC1BC200BD8FF2 /* YelpClient.swift */,
+				F4C4B6291CAEF4A700CB1D8A /* Credentials.swift */,
 				7C1DA9B11CAB84FB001172AA /* Info.plist */,
 				7C1DA9A91CAB84FB001172AA /* alimentum.xcdatamodeld */,
 			);
@@ -360,7 +361,7 @@
 				F4AE7AF01CABE58E00860526 /* BusinessListingTableViewCell.swift in Sources */,
 				7C1DA9AB1CAB84FB001172AA /* alimentum.xcdatamodeld in Sources */,
 				F48AD5351CAC1BC200BD8FF2 /* YelpClient.swift in Sources */,
-				F48E447A1CAE8685007C65DC /* PageViewController.swift in Sources */,
+				F48E447A1CAE8685007C65DC /* IntroPageViewController.swift in Sources */,
 				F4AE7AF11CABE58E00860526 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,6 +514,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nitishdayal.iosdohoproject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -528,6 +530,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nitishdayal.iosdohoproject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
