@@ -34,12 +34,12 @@
 However we did not get a chance to finish the application the way __we wanted to__, which, frankly, is far more important to me. We want more usability: what if we allowed the user to select between different category options (ie; food, parks, bars, events, etc.), or choose how many results they wanted returned, or save generated lists under location-based categories (ie; home-food-list, school-parks-list, work-bars-list, etc.) to allow for some offline functionality? We wanted to integrate Social Networking/Sharing services. We wanted _pictures_. So as it stands, this project is best defined as "on hiatus", though there is a strong possibility that we will return and add at least one or two final touches within the coming weeks. When that time comes, here is a brief list of ideas to implement:
 
 ######TODO:
-    - [ ] Use CoreData to save offline lists
-    - [ ] Find a way to do ^ without breaking Yelp ToC
-    - [ ] Add drop-down list of basic category options
-    - [ ] Change Main View Controller title label to update value based on current category 
-    - [ ] Add some images. Somewhere. Anywhere. Not really, it should be tasteful, but yes we need images.
-    - [ ] Decide when to finally walk away from this.
+- [ ] Use CoreData to save offline lists
+- [ ] Find a way to do ^ without breaking Yelp ToC
+- [ ] Add drop-down list of basic category options
+- [ ] Change Main View Controller title label to update value based on current category 
+- [ ] Add some images. Somewhere. Anywhere. Not really, it should be tasteful, but yes we need images.
+- [ ] Decide when to finally walk away from this.
 
 ###License:
   Released under MIT License
