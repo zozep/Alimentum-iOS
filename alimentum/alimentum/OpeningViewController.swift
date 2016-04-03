@@ -9,6 +9,8 @@
 //
 
 import UIKit
+import CoreLocation
+import OAuthSwift
 
 class OpeningViewController: UIViewController, IntroPageViewControllerDelegate {
     
@@ -33,7 +35,6 @@ class OpeningViewController: UIViewController, IntroPageViewControllerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         //If passed in segue has destinationViewController of type PageViewController, declare self (OpeningViewController) as viewDelegate
@@ -62,7 +63,5 @@ class OpeningViewController: UIViewController, IntroPageViewControllerDelegate {
         background.frame = self.view.bounds
         self.view.layer.insertSublayer(background, atIndex: 0)
     }
-    
 }
-
 

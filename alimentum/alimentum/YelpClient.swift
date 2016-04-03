@@ -13,17 +13,19 @@ import OAuthSwift
 
 //MARK: - YelpAPIConsole struct, to hold key & secret values for API call
 struct YelpAPIConsole {
+    
     var consumerKey = Credentials().c_key
     var consumerSecret = Credentials().c_secret
     var accessToken = Credentials().a_Token
     var accessTokenSecret = Credentials().a_TokenSecret
+    
 }
 
 
 //MARK: - Make custom class YelpAPIClient that conforms to class NSObject
 class YelpAPIClient: NSObject {
     
-    let APIBaseUrl = "https://api.yelp.com/v2"
+    let yelpSearchUrl = "https://api.yelp.com/v2/search"
     let clientOAuth: OAuthSwiftClient?
     let apiConsoleInfo: YelpAPIConsole
     
@@ -35,7 +37,6 @@ class YelpAPIClient: NSObject {
 
     /* Add GET request functionality with Yelp! API authorized search URL */
     func searchPlacesWithParameters(searchParameters: Dictionary<String, String>, successSearch: (data: NSData, response: NSHTTPURLResponse) -> Void, failureSearch: (error: NSError) -> Void) {
-        let searchUrl = APIBaseUrl + "/search"
-        clientOAuth!.get(searchUrl, parameters: searchParameters, success: successSearch, failure: failureSearch)
+        clientOAuth!.get(yelpSearchUrl, parameters: searchParameters, success: successSearch, failure: failureSearch)
     }
 }

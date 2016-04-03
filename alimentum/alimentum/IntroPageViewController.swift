@@ -12,7 +12,9 @@ import UIKit
 import CoreLocation
 import OAuthSwift
 
-//Declare protocol PageViewControllerDelegate that requires two functions
+
+//MARK: - Declare protocol 'IntroPageViewControllerDelegate'
+
 protocol IntroPageViewControllerDelegate: class {
     
     /* Function that will be called to update current page count */
@@ -22,9 +24,10 @@ protocol IntroPageViewControllerDelegate: class {
     func introPageViewController(pageViewController: IntroPageViewController, didUpdatePageIndex index: Int)
 }
 
+
 class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
    
-    
+
 //MARK: - Declare variables to be used throughout IntroPageViewController
     
     weak var viewDelegate : IntroPageViewControllerDelegate?
@@ -80,6 +83,7 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
 //MARK: - UIPageViewControllerDelegate/DataSource functions
     
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool){
+        
         if let firstViewController = viewControllers?.first,
             let index = orderedViewControllers.indexOf(firstViewController) {
                 viewDelegate?.introPageViewController(self, didUpdatePageIndex: index)
@@ -117,7 +121,6 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
         return UIStoryboard(name: "FirstTime", bundle: nil).instantiateViewControllerWithIdentifier(identifier)
     }
     
-    
     func initAppearance() -> Void {
         
         //Set background color to be pretty turquouise gradient color
@@ -126,3 +129,4 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
         self.view.layer.insertSublayer(background, atIndex: 0)
     }
 }
+

@@ -9,9 +9,8 @@
 //
 
 import UIKit
-import OAuthSwift
 import CoreLocation
-import MapKit
+import OAuthSwift
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 
@@ -251,7 +250,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         getFoodNearMe(userCurrentLocation, term: apiSearchTerm)
     }
     
-    
     func initAppearance() -> Void {
         
         //Set background color
@@ -365,11 +363,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         loadingSpinner.stopAnimating()
     }
     
-    
     /* Scrolls view to top of table. Called after reloading tableView data in animateTable */
     func scrollToFirstRow() {
         let indexPath = NSIndexPath(forRow: 0, inSection: 1)
         self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
     }
-
 }
+
