@@ -9,7 +9,24 @@
   Request User location and generate list of 10 closest open food-related businesses in the area, 
   sortable by "Delivery" or "All".
   User can call businesses listed (if valid number is provided) directly from application, and will be returned to application on call end.
+  
+###Installation:
+ - Clone Github repository
+ - Add new file 'Credentials.swift' to project and paste the following into said file, updating necessary information:
 
+```
+import UIKit
+import OAuthSwift
+
+struct Credentials {
+
+   /* Please provide your own keys/tokens/secrets. This can be obtained at Yelp.com/developers */
+    var c_key = "YOUR CONSUMER KEY HERE"
+    var c_secret = "YOUR CONSUMER SECRET HERE"
+    var a_Token = "YOUR TOKEN HERE"
+    var a_TokenSecret = "YOUR TOKEN SECRET HERE"
+}
+```
   
 ### Resources Used:
 
