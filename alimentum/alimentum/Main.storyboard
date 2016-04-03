@@ -126,12 +126,12 @@ Bellevue, WA 98004</string>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="E13-jz-FDe">
                                 <rect key="frame" x="175" y="321" width="25" height="25"/>
-                                <color key="backgroundColor" white="1" alpha="0.69999999999999996" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="1qm-dQ-uL3"/>
                                     <constraint firstAttribute="height" constant="25" id="7vp-Cd-2VO"/>
                                 </constraints>
-                                <color key="color" red="0.57338916156551134" green="0.15474893379661833" blue="0.66866410340314131" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="color" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DUd-EP-f7c">
                                 <rect key="frame" x="24" y="52" width="327" height="29"/>
