@@ -18,7 +18,7 @@
   - Xcode 7.3
   - Yelp API
   - OAuthSwift
-  - iOS Core Frameworks: Core Data
+  - iOS Core Frameworks: Core Location
   - Github and Git
   
 ######Research & Reference Material: 
