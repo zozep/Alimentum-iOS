@@ -1,15 +1,16 @@
 //
-//  ViewController.swift
+//  AppDelegate.swift
 //  alimentum
 //
-//  Created by Joseph Park on 3/29/16.
-//  Copyright © 2016 Joseph Park. All rights reserved.
+//  Created by Nitish Dayal, Joseph Park
+//  Copyright © 2016 Nitish Dayal, Joseph Park. All rights reserved.
+//
+//  Libraries used in project include: UIKit, CoreLocation, 0AuthSwift
 //
 
 import UIKit
-import OAuthSwift
 import CoreLocation
-import MapKit
+import OAuthSwift
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 
@@ -20,8 +21,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
-    
-    /* Define var locationManager as onstance of CoreLocationLocationManager (CLLocationManager) */
+    @IBOutlet weak var viewTitle: UILabel!
     
     /* API Implementation (see YelpClient.swift) */
     let apiConsoleInfo = YelpAPIConsole()
@@ -29,7 +29,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var apiSearchTerm: NSString!
     
     /* Define variables to be used for CoreLocation functionality */
-    let locationManager = CLLocationManager()
+    let locationManager = CLLocationManager() //Provides access to CoreLocation framework
     var locationStatus : NSString = "Not Started" // String updated based on location/privacy settings of User
     var userCurrentLocation: String! // Variable to store current location in form of City,State,ZIP,Country for API call
     let reverseGeolocation = CLGeocoder() // Set CoreLocationGeoCoder to var reverseGeolocation. This is not the only use of CoreLocationGeoCoder, but this is the only use we will be getting from it.
@@ -38,27 +38,21 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     let chars = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890,.:".characters)
     
     /* Define variabled to be assigned to returned values from API GET request */
-    var businessList: NSArray = []
-    var amtOfBusinessesAvailable: Int!
-    var phoneNumber = String()
+    var businessList: NSArray = [] //Array of businesses returned from API call
+    var amtOfBusinessesAvailable: Int! //Total amt of businesses returned from API call (this variable is not utilized in the current iteration of this application)
+    var phoneNumber = String() //What could it be?!
 
     
-    
 //MARK: - Default functions that are a part of UIViewController
+    
     override func viewDidLoad() {
         print("viewdidload")
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib
         initAppearance()
+        checkLocationServices()
         
-    }
-    
-    func initAppearance() -> Void {
-        
-        let background = CAGradientLayer().turquoiseColor()
-        background.frame = self.view.bounds
-        self.view.layer.insertSublayer(background, atIndex: 0)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -79,8 +73,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
     
-
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -89,8 +81,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
 //MARK: - TableView Functions
 
-    
-    //Making separate section for each business to allow for spacing between cells
+    /* Making separate section for each business to allow for spacing between cells */
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if businessList.count > 1 {
             print("sectionsintable \(businessList.count)")
@@ -102,7 +93,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    //Each section should only have one row, for the one business it will hold
+    /* Each section should only have one row, for the one business it will hold */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section > 0 {
             print("rowsinsection")
@@ -113,8 +104,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    
-    //Clear header for each section so that background view appears.
+    /* Clear header for each section so that background view appears. */
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         print("headerview")
         let headerView = UIView()
@@ -122,55 +112,44 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return headerView
     }
     
-    
+    /* Set values for each cell */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("businessCellIdentifier", forIndexPath: indexPath) as! BusinessListingTableViewCell
         print("tableview cellforrow ", indexPath.section)
+        
+        //Check if businessList array has length greater than 0 (contains any values)
         if businessList.count > 0 {
+            
+            //Declare constants for current cell, forcing type String where values are not implicity unwrapped as type String
             let currentBusiness = businessList[indexPath.section]
+            
+            //Unfiltered (AKA "dirty") values of currentBusiness city and display-address (pre-formatted address value...which is still really dirty)
             let dirtyCity = String(currentBusiness["location"]!!["city"]!!)
             let dirtyAddress = String(currentBusiness["location"]!!["display_address"]!!)
-            let phone: String!
+            
+            //Check if currentBusiness has phone number, and if so then set variable phone to be said phone number
             if (currentBusiness["display_phone"]!) != nil {
-                phone = String(currentBusiness["display_phone"]!!)
+                phoneNumber = String(currentBusiness["display_phone"]!!)
             } else {
-                print(String(currentBusiness["display_phone"]!))
-                phone = "N/A"
-                
+                phoneNumber = "N/A"
             }
+            
+            //Set constant businessAddress to be returned value from function cleanReturnedAddress, passing in dirtyAddress and dirtyCity values as parameters
             let businessAddress = cleanReturnedAddress(dirtyAddress, city: dirtyCity)
+            
+            //Set display values for current cell
             cell.businessName.text = "\(currentBusiness["name"]!! as! String)"
-            self.phoneNumber = "\(phone)"
             cell.callPhoneNumber.tag = indexPath.section
-            cell.phoneNumber.text = "Phone: \(phone)"
+            cell.phoneNumber.text = "Phone: \(phoneNumber)"
             cell.address.text = "Address: \n\(businessAddress)"
             cell.rating.text = "Yelp! Rating: \(String(currentBusiness["rating"]!! as! Int))"
         }
         return cell
     }
-    
-//MARK: - Phone Call function
-    
-    @IBAction func phoneCallButton(sender: UIButton) {
-        print(sender.tag)
-        if let numberToDial = businessList[sender.tag]["display_phone"]! as? String {
-            let url = NSURL(string: "tel://\((numberToDial))")
-            if let url = url {
-                UIApplication.sharedApplication().openURL(url)
-                print("making phonecalls!")
-                
-            }
-            print(url)
-        } else {
-            showNilPhoneAlert()
-        }
-    }
-
-    
 
     
 //MARK: - CoreLocation Functions
-    
     
     /* Simply checks to see if user has provided us with location access, then prints to log what type of accesss we have been granted */
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -200,7 +179,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     /* Function is a required delegate method (this viewController conforms to the CLLocationManagerDelegate by including this function)
     that is called whenever the user's location is updated. Defaults to updating every second */
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //Throw it in reverse.
+        
+        //Throw it in reverse. Gets placemark location (see Swift docs for type CLPlacemark) value from provided latitude/longitude.
         reverseGeolocation.reverseGeocodeLocation(manager.location!) { (placemarks, error) in
             if (error != nil) {
                 print("Reverse geocoder failed with error" + error!.localizedDescription)
@@ -217,13 +197,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     /* This is the function of magic and mystery */
     func displayLocationInfo(placemark: CLPlacemark) {
-        //Set var usercurrentLocation to the returned values from successful reverseGeolocation.
+        
+        //Set var userCurrentLocation to the returned values from successful reverseGeolocation.
         userCurrentLocation = "\(placemark.locality!),\(placemark.postalCode!),\(placemark.administrativeArea!),\(placemark.country!)"
         
         //stop updating location to save battery life (The location should essentially be grabbed only one time instead of updating every second)
         locationManager.stopUpdatingLocation()
         
-        //Call function that sends API request, passing in the var userCurrentLocation = "City,State,ZIP,Country"
+        //Call function that sends API request, passing in the var userCurrentLocation = "City,State,ZIP,Country", and setting search term to "all"
         apiSearchTerm = "all"
         getFoodNearMe(userCurrentLocation, term: apiSearchTerm)
         
@@ -237,12 +218,25 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    
 //MARK: - Custom Functions
     
-
+    /* Function called if '+' button next to phone # is pressed */
+    @IBAction func phoneCallButton(sender: UIButton) {
+        //If businessList at index sender.tag has value for key "display_phone", open dialer app and autodial number
+        if let numberToDial = businessList[sender.tag]["display_phone"]! as? String {
+            let dialerValue = NSURL(string: "tel://\((numberToDial))")
+            UIApplication.sharedApplication().openURL(dialerValue!)
+        }
+        //If businessList at index sender.tag has no value for key "display_phone", display UIAlertController
+        else {
+            showNilPhoneAlert()
+        }
+    }
+    
+    /* Function called when value of UISegmentedControl is changed */
     @IBAction func indexChanged(sender: UISegmentedControl) {
         
+        //Changes term for API call from "all" to "delivery" to match corresponding Segmented Control option
         switch segmentControl.selectedSegmentIndex {
         case 0:
             self.apiSearchTerm = "all"
@@ -251,14 +245,28 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         default:
             break
         }
+        
+        //Calls function getFoodNearMe, passing in current location and updated API search term
         getFoodNearMe(userCurrentLocation, term: apiSearchTerm)
+    }
+    
+    func initAppearance() -> Void {
+        
+        //Set background color
+        let background = CAGradientLayer().turquoiseColor()
+        background.frame = self.view.bounds
+        self.view.layer.insertSublayer(background, atIndex: 0)
     }
     
     
     /* Function to make API request, passing in users location for parameter "location", 
      term updates based on 'delivery' or 'all' */
     func getFoodNearMe(location: String, term: NSString){
+        
+        //While running API get request and setting up table, display activity indicator
         loadingSpinner.startAnimating()
+        
+        //
         client.searchPlacesWithParameters(
             [
                 "term": "\(term)",
@@ -267,22 +275,23 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 "category_filter": "food",
                 "sort": "0",
                 "actionlinks" : "false",
-                "limit" : "10"
+                "limit" : "10",
+                "open_now" : "5758"
             ], successSearch: { (data, response) -> Void in
                 do {
                     let result = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
                     self.businessList = result["businesses"]! as! NSArray
                     self.amtOfBusinessesAvailable = result["total"]! as! Int
                     self.animateTable()
+                    print(result)
                 } catch let error as NSError {
                     print(error)
                 }
+                
         }) { (error) -> Void in
             print(error)
         }
     }
-    
-    
     
     /* This alert will be displayed if user does not have Location Services enabled. Will also direct them to their settings page so that they may turn it on */
     func showLocationAlert() {
@@ -293,15 +302,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         showViewController(alert, sender: self)
     }
     
+    
+    /* This alert will be displayed if the user selects the '+' button next to a phone number where a business does not have a valid number available */
     func showNilPhoneAlert() {
         let alert = UIAlertController(title: "No Number Listed", message: "Sorry, this business does not have a valid number listed! 😥", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: nil))
         showViewController(alert, sender: self)
     }
     
-    
-    func getUserLocation() {
-        print("getuserlocation")
+    /* Called from IntroPageViewController on first app launch and MainViewController every app launch */
+    func checkLocationServices() {
         /* Once main view has appeared, check if user has enabled location services on their device */
         if CLLocationManager.locationServicesEnabled() == false {
             showLocationAlert() // If user has location services disabled, show UIAlertView described below in func showAlert
@@ -313,17 +323,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
     
-    
-    func cleanReturnedAddress(str: String, city: String) -> String {
-        let testThingy = String(str.characters.filter { chars.contains($0) })
-        var returnString = testThingy.removeWhitespace().stringByReplacingOccurrencesOfString(",", withString: "\n")
+    /* Returns cleaned address after running filters on passed in values for displayAddress and city */
+    func cleanReturnedAddress(address: String, city: String) -> String {
+        
+        let whiteSpaceString = String(address.characters.filter { chars.contains($0) })
+        var returnString = whiteSpaceString.removeWhitespace().stringByReplacingOccurrencesOfString(",", withString: "\n")
         let insertCommaHere = returnString.endIndex.advancedBy(-10)
         returnString.removeAtIndex(insertCommaHere)
         returnString.insert(",", atIndex: insertCommaHere)
+        
         return returnString
     }
     
-    
+    /* Animates the tableView on every API call */
     func animateTable() {
         dispatch_async(dispatch_get_main_queue(), {
             print("dispatchAsync animatetable")
@@ -351,46 +363,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         loadingSpinner.stopAnimating()
     }
     
-    
+    /* Scrolls view to top of table. Called after reloading tableView data in animateTable */
     func scrollToFirstRow() {
         let indexPath = NSIndexPath(forRow: 0, inSection: 1)
         self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
     }
-
 }
 
-
-
-
-
-
-
-
-
-extension String {
-    func replace(string:String, replacement:String) -> String {
-        return self.stringByReplacingOccurrencesOfString(string, withString: replacement, options: NSStringCompareOptions.LiteralSearch, range: nil)
-    }
-    
-    func removeWhitespace() -> String {
-        return self.replace("  ", replacement: "")
-    }
-}
-
-
-extension CAGradientLayer {
-    
-    func turquoiseColor() -> CAGradientLayer {
-        let topColor = UIColor(red: (15/255.0), green: (148/255.0), blue: (180/255.0), alpha: 1)
-        let bottomColor = UIColor(red: (84/255.0), green: (187/255.0), blue: (187/255.0), alpha: 1)
-        
-        let gradientColors: Array <AnyObject> = [topColor.CGColor, bottomColor.CGColor]
-        let gradientLocations: Array <AnyObject> = [0.0, 1.0]
-        
-        let gradientLayer: CAGradientLayer = CAGradientLayer()
-        gradientLayer.colors = gradientColors
-        gradientLayer.locations = gradientLocations as? [NSNumber]
-        
-        return gradientLayer
-    }
-}
