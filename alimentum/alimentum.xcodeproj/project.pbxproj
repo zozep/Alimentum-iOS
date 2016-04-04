@@ -14,7 +14,6 @@
 		7C1DA9B01CAB84FB001172AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C1DA9AE1CAB84FB001172AA /* LaunchScreen.storyboard */; };
 		7C1DA9BB1CAB84FB001172AA /* alimentumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1DA9BA1CAB84FB001172AA /* alimentumTests.swift */; };
 		7C1DA9C61CAB84FB001172AA /* alimentumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1DA9C51CAB84FB001172AA /* alimentumUITests.swift */; };
-		7CD110871CAF26330049E240 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD110861CAF26330049E240 /* Credentials.swift */; };
 		A0E90DD0EC56F9C8190EF7B6 /* Pods_alimentum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D629BBEC30E39227DB0D6E0F /* Pods_alimentum.framework */; };
 		F40F81A41CAC536F0072A1A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C581EC21CABE70C008B4ABB /* Main.storyboard */; };
 		F48AD5351CAC1BC200BD8FF2 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48AD5341CAC1BC200BD8FF2 /* YelpClient.swift */; };
@@ -22,6 +21,7 @@
 		F48E447C1CAE8DF5007C65DC /* OpeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48E447B1CAE8DF5007C65DC /* OpeningViewController.swift */; };
 		F4AE7AF01CABE58E00860526 /* BusinessListingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AE7AEE1CABE58E00860526 /* BusinessListingTableViewCell.swift */; };
 		F4AE7AF11CABE58E00860526 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AE7AEF1CABE58E00860526 /* MainViewController.swift */; };
+		F4B552DB1CB16C0D0058E0B5 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B552DA1CB16C0D0058E0B5 /* Credentials.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +57,6 @@
 		7C1DA9C51CAB84FB001172AA /* alimentumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = alimentumUITests.swift; sourceTree = "<group>"; };
 		7C1DA9C71CAB84FB001172AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C581EC21CABE70C008B4ABB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		7CD110861CAF26330049E240 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Credentials.swift; path = ../../../../Downloads/Credentials.swift; sourceTree = "<group>"; };
 		D629BBEC30E39227DB0D6E0F /* Pods_alimentum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_alimentum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9DEBB8BB96009C5BCE1DEEF /* Pods-alimentum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-alimentum.debug.xcconfig"; path = "Pods/Target Support Files/Pods-alimentum/Pods-alimentum.debug.xcconfig"; sourceTree = "<group>"; };
 		F48AD5341CAC1BC200BD8FF2 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
@@ -65,6 +64,7 @@
 		F48E447B1CAE8DF5007C65DC /* OpeningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpeningViewController.swift; sourceTree = "<group>"; };
 		F4AE7AEE1CABE58E00860526 /* BusinessListingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessListingTableViewCell.swift; sourceTree = "<group>"; };
 		F4AE7AEF1CABE58E00860526 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F4B552DA1CB16C0D0058E0B5 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +126,7 @@
 		7C1DA9A11CAB84FB001172AA /* alimentum */ = {
 			isa = PBXGroup;
 			children = (
-				7CD110861CAF26330049E240 /* Credentials.swift */,
+				F4B552DA1CB16C0D0058E0B5 /* Credentials.swift */,
 				7C1DA9AE1CAB84FB001172AA /* LaunchScreen.storyboard */,
 				7C1DA9A61CAB84FB001172AA /* FirstTime.storyboard */,
 				7C581EC21CABE70C008B4ABB /* Main.storyboard */,
@@ -137,7 +137,6 @@
 				7C1DA9AC1CAB84FB001172AA /* Assets.xcassets */,
 				F4AE7AEE1CABE58E00860526 /* BusinessListingTableViewCell.swift */,
 				F48AD5341CAC1BC200BD8FF2 /* YelpClient.swift */,
-				F4C4B6291CAEF4A700CB1D8A /* Credentials.swift */,
 				7C1DA9B11CAB84FB001172AA /* Info.plist */,
 				7C1DA9A91CAB84FB001172AA /* alimentum.xcdatamodeld */,
 			);
@@ -357,7 +356,7 @@
 			files = (
 				F48E447C1CAE8DF5007C65DC /* OpeningViewController.swift in Sources */,
 				7C1DA9A31CAB84FB001172AA /* AppDelegate.swift in Sources */,
-				7CD110871CAF26330049E240 /* Credentials.swift in Sources */,
+				F4B552DB1CB16C0D0058E0B5 /* Credentials.swift in Sources */,
 				F4AE7AF01CABE58E00860526 /* BusinessListingTableViewCell.swift in Sources */,
 				7C1DA9AB1CAB84FB001172AA /* alimentum.xcdatamodeld in Sources */,
 				F48AD5351CAC1BC200BD8FF2 /* YelpClient.swift in Sources */,
