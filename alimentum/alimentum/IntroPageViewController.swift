@@ -52,7 +52,7 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
         delegate = self
         
         //Set launchedBefore to be boolean value returned for NSUserDefault key "launchedBefore"
-        let launchedBefore = NSUserDefaults.standardUserDefaults().boolForKey("launchedBefore")
+        let launchedBefore = false //NSUserDefaults.standardUserDefaults().boolForKey("launchedBefore")
         
         //If launchedBefore returns true, present mainViewController
         if launchedBefore  {
