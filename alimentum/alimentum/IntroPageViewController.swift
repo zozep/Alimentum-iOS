@@ -27,9 +27,7 @@ protocol IntroPageViewControllerDelegate: class {
 
 class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
    
-
 //MARK: - Declare variables to be used throughout IntroPageViewController
-    
     weak var viewDelegate : IntroPageViewControllerDelegate?
     
     //orderedViewControllers will not be defined until called upon (lazy), and is an array of type UIViewController
@@ -46,6 +44,7 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        makeBlurImage(blurInit())
         
         //On view load, set self to be dataSource and delegate for PageViewController
         dataSource = self
@@ -128,5 +127,31 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
         background.frame = self.view.bounds
         self.view.layer.insertSublayer(background, atIndex: 0)
     }
+    //1. set image
+//    func blurInit()->UIImageView? {
+//        let sampleImageView = UIImageView(frame: self.view.frame)
+//        let sampleImage:UIImage = UIImage(named: "rest.png")!
+//        sampleImageView.image =  sampleImage
+//        self.view.addSubview(sampleImageView)
+//        
+//        //Convert To Blur Image Here
+//        return sampleImageView
+//    }
+//    //2. get that image to blur
+//    func makeBlurImage(targetImageView:UIImageView?) {
+//        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//        blurEffectView.frame = targetImageView!.bounds
+//        // for supporting device rotation
+//        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+//        targetImageView?.addSubview(blurEffectView)
+//        
+//    }
+//
+//
 }
+
+
+
+
 

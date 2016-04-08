@@ -18,46 +18,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ot4-5a-rMK">
-                                <rect key="frame" x="16" y="28" width="288" height="62"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rest" translatesAutoresizingMaskIntoConstraints="NO" id="Xm1-2I-31d">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Simulator Screen Shot Apr 1, 2016, 2.53.27 PM" translatesAutoresizingMaskIntoConstraints="NO" id="Rhw-3p-1uj">
+                                <rect key="frame" x="16" y="126" width="288" height="389"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ot4-5a-rMK">
+                                <rect key="frame" x="16" y="20" width="288" height="85"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="find most popular open restaurants within  ">
+                                    <fragment content="Find most popular open restaurants within 5 miles of your current location">
                                         <attributes>
                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="25" name="HelveticaNeue-Thin"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="5 miles">
-                                        <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="27" name="HelveticaNeue-MediumItalic"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" of your current location!">
-                                        <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="25" name="HelveticaNeue-Thin"/>
+                                            <font key="NSFont" size="24" name="HelveticaNeue-Thin"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Ot4-5a-rMK" firstAttribute="top" secondItem="bj1-jw-6Yx" secondAttribute="bottom" constant="8" symbolic="YES" id="11U-BB-6WA"/>
-                            <constraint firstItem="Ot4-5a-rMK" firstAttribute="trailing" secondItem="sYE-hv-yzL" secondAttribute="trailingMargin" id="GsO-JF-mha"/>
-                            <constraint firstItem="Ot4-5a-rMK" firstAttribute="leading" secondItem="sYE-hv-yzL" secondAttribute="leadingMargin" id="lM1-L3-463"/>
+                            <constraint firstItem="Ot4-5a-rMK" firstAttribute="leading" secondItem="sYE-hv-yzL" secondAttribute="leadingMargin" id="IcX-BH-S1Y"/>
+                            <constraint firstItem="Ot4-5a-rMK" firstAttribute="trailing" secondItem="sYE-hv-yzL" secondAttribute="trailingMargin" id="Jlh-Ml-nHY"/>
+                            <constraint firstItem="C61-3c-ch9" firstAttribute="top" secondItem="Rhw-3p-1uj" secondAttribute="bottom" constant="53" id="MM1-a1-f5R"/>
+                            <constraint firstItem="Ot4-5a-rMK" firstAttribute="top" secondItem="bj1-jw-6Yx" secondAttribute="bottom" id="NKP-cX-vPd"/>
+                            <constraint firstItem="Rhw-3p-1uj" firstAttribute="top" secondItem="Ot4-5a-rMK" secondAttribute="bottom" constant="21" id="YPS-JW-dRp"/>
+                            <constraint firstItem="Rhw-3p-1uj" firstAttribute="top" secondItem="Ot4-5a-rMK" secondAttribute="bottom" constant="21" id="atl-ZY-LxT"/>
+                            <constraint firstItem="Rhw-3p-1uj" firstAttribute="leading" secondItem="sYE-hv-yzL" secondAttribute="leadingMargin" id="fO3-zs-E5H"/>
+                            <constraint firstItem="Ot4-5a-rMK" firstAttribute="centerX" secondItem="sYE-hv-yzL" secondAttribute="centerX" id="qJf-O9-ihO"/>
+                            <constraint firstItem="Rhw-3p-1uj" firstAttribute="trailing" secondItem="sYE-hv-yzL" secondAttribute="trailingMargin" id="zqW-3A-PAc"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yfw-Ij-HSY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-990.93333333333328" y="-2996.1999999999998"/>
+            <point key="canvasLocation" x="-991" y="-2997"/>
         </scene>
         <!--Opening View Controller-->
         <scene sceneID="LDL-VC-sdj">
@@ -71,39 +71,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="IvT-L4-VXo">
-                                <rect key="frame" x="141" y="523" width="39" height="37"/>
-                            </pageControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x7h-0M-hrl">
-                                <rect key="frame" x="16" y="20" width="288" height="43"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="alimentum">
-                                        <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="36" name="HelveticaNeue-Thin"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ys-20-Y9w">
-                                <rect key="frame" x="0.0" y="89" width="320" height="479"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <connections>
                                     <segue destination="vds-Bn-eNu" kind="embed" id="eVw-Mf-juL"/>
                                 </connections>
                             </containerView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="IvT-L4-VXo">
+                                <rect key="frame" x="141" y="523" width="39" height="37"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="1ys-20-Y9w" firstAttribute="top" secondItem="Qpz-Mr-xD6" secondAttribute="top" id="3MP-NN-zZ5"/>
                             <constraint firstItem="1ys-20-Y9w" firstAttribute="leading" secondItem="Qpz-Mr-xD6" secondAttribute="leading" id="70t-hu-c5b"/>
                             <constraint firstItem="NRI-p7-Xwr" firstAttribute="top" secondItem="IvT-L4-VXo" secondAttribute="bottom" constant="8" symbolic="YES" id="UU6-Tz-hBw"/>
-                            <constraint firstItem="x7h-0M-hrl" firstAttribute="trailing" secondItem="Qpz-Mr-xD6" secondAttribute="trailingMargin" id="YQv-Ve-Apn"/>
-                            <constraint firstItem="x7h-0M-hrl" firstAttribute="top" secondItem="tOD-22-5g7" secondAttribute="bottom" id="Z26-EF-qWp"/>
                             <constraint firstAttribute="trailing" secondItem="1ys-20-Y9w" secondAttribute="trailing" id="hqx-A7-djp"/>
                             <constraint firstItem="IvT-L4-VXo" firstAttribute="centerX" secondItem="Qpz-Mr-xD6" secondAttribute="centerX" id="rMS-uu-RoW"/>
-                            <constraint firstItem="x7h-0M-hrl" firstAttribute="leading" secondItem="Qpz-Mr-xD6" secondAttribute="leadingMargin" id="s9P-0I-tWk"/>
-                            <constraint firstItem="1ys-20-Y9w" firstAttribute="top" secondItem="x7h-0M-hrl" secondAttribute="bottom" constant="26" id="tth-ZZ-jSU"/>
                             <constraint firstItem="NRI-p7-Xwr" firstAttribute="top" secondItem="1ys-20-Y9w" secondAttribute="bottom" id="y0h-qW-TvN"/>
                         </constraints>
                     </view>
@@ -114,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tJ9-FF-yaA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-999.4666666666667" y="-2219.9333333333334"/>
+            <point key="canvasLocation" x="-1000" y="-2220"/>
         </scene>
         <!--Intro Page View Controller-->
         <scene sceneID="ZIF-gv-N8e">
@@ -238,4 +222,8 @@
             <point key="canvasLocation" x="-201.59999999999999" y="-2996.1999999999998"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Simulator Screen Shot Apr 1, 2016, 2.53.27 PM" width="562" height="1000"/>
+        <image name="rest" width="2352" height="2352"/>
+    </resources>
 </document>

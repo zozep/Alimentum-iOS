@@ -28,7 +28,7 @@ class OpeningViewController: UIViewController, IntroPageViewControllerDelegate {
         super.viewDidLoad()
         
         //On view load, call upon initAppearance method
-        initAppearance()
+//        initAppearance()
     }
     
     override func didReceiveMemoryWarning() {
