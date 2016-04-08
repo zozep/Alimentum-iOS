@@ -59,6 +59,7 @@ class OpeningViewController: UIViewController, IntroPageViewControllerDelegate {
 
     func initAppearance() -> Void {
         //sets background color of current view
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "rest.png")!)
         let background = CAGradientLayer().turquoiseColor()
         background.frame = self.view.bounds
         self.view.layer.insertSublayer(background, atIndex: 0)
