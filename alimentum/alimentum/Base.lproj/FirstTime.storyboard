@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rest" translatesAutoresizingMaskIntoConstraints="NO" id="Xm1-2I-31d">
+                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rest" translatesAutoresizingMaskIntoConstraints="NO" id="Xm1-2I-31d">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Simulator Screen Shot Apr 1, 2016, 2.53.27 PM" translatesAutoresizingMaskIntoConstraints="NO" id="Rhw-3p-1uj">
@@ -43,6 +43,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Xm1-2I-31d" firstAttribute="centerX" secondItem="Ot4-5a-rMK" secondAttribute="centerX" id="4bi-8I-XUF"/>
+                            <constraint firstItem="Xm1-2I-31d" firstAttribute="bottom" secondItem="C61-3c-ch9" secondAttribute="top" id="HKh-Mz-niE"/>
                             <constraint firstItem="Ot4-5a-rMK" firstAttribute="leading" secondItem="sYE-hv-yzL" secondAttribute="leadingMargin" id="IcX-BH-S1Y"/>
                             <constraint firstItem="Ot4-5a-rMK" firstAttribute="trailing" secondItem="sYE-hv-yzL" secondAttribute="trailingMargin" id="Jlh-Ml-nHY"/>
                             <constraint firstItem="C61-3c-ch9" firstAttribute="top" secondItem="Rhw-3p-1uj" secondAttribute="bottom" constant="53" id="MM1-a1-f5R"/>
@@ -50,6 +52,8 @@
                             <constraint firstItem="Rhw-3p-1uj" firstAttribute="top" secondItem="Ot4-5a-rMK" secondAttribute="bottom" constant="21" id="YPS-JW-dRp"/>
                             <constraint firstItem="Rhw-3p-1uj" firstAttribute="top" secondItem="Ot4-5a-rMK" secondAttribute="bottom" constant="21" id="atl-ZY-LxT"/>
                             <constraint firstItem="Rhw-3p-1uj" firstAttribute="leading" secondItem="sYE-hv-yzL" secondAttribute="leadingMargin" id="fO3-zs-E5H"/>
+                            <constraint firstItem="Xm1-2I-31d" firstAttribute="leading" secondItem="sYE-hv-yzL" secondAttribute="leading" id="gBH-u2-uut"/>
+                            <constraint firstItem="Xm1-2I-31d" firstAttribute="top" secondItem="sYE-hv-yzL" secondAttribute="top" id="gjP-tA-RVf"/>
                             <constraint firstItem="Ot4-5a-rMK" firstAttribute="centerX" secondItem="sYE-hv-yzL" secondAttribute="centerX" id="qJf-O9-ihO"/>
                             <constraint firstItem="Rhw-3p-1uj" firstAttribute="trailing" secondItem="sYE-hv-yzL" secondAttribute="trailingMargin" id="zqW-3A-PAc"/>
                         </constraints>
