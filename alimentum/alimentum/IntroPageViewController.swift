@@ -44,7 +44,6 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        makeBlurImage(blurInit())
         
         //On view load, set self to be dataSource and delegate for PageViewController
         dataSource = self
@@ -121,34 +120,13 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
     }
     
     func initAppearance() -> Void {
-        
+//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "rest.png")!)
         //Set background color to be pretty turquouise gradient color
         let background = CAGradientLayer().turquoiseColor()
         background.frame = self.view.bounds
         self.view.layer.insertSublayer(background, atIndex: 0)
     }
-    //1. set image
-//    func blurInit()->UIImageView? {
-//        let sampleImageView = UIImageView(frame: self.view.frame)
-//        let sampleImage:UIImage = UIImage(named: "rest.png")!
-//        sampleImageView.image =  sampleImage
-//        self.view.addSubview(sampleImageView)
-//        
-//        //Convert To Blur Image Here
-//        return sampleImageView
-//    }
-//    //2. get that image to blur
-//    func makeBlurImage(targetImageView:UIImageView?) {
-//        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
-//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//        blurEffectView.frame = targetImageView!.bounds
-//        // for supporting device rotation
-//        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-//        targetImageView?.addSubview(blurEffectView)
-//        
-//    }
-//
-//
+
 }
 
 

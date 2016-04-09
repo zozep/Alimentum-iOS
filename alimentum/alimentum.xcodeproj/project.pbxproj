@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C00E5FB1CB8B4FE0038FBA0 /* Simulator Screen Shot Apr 8, 2016, 8.55.58 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C00E5FA1CB8B4FE0038FBA0 /* Simulator Screen Shot Apr 8, 2016, 8.55.58 PM.png */; };
 		7C1DA9A31CAB84FB001172AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1DA9A21CAB84FB001172AA /* AppDelegate.swift */; };
 		7C1DA9A81CAB84FB001172AA /* FirstTime.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C1DA9A61CAB84FB001172AA /* FirstTime.storyboard */; };
 		7C1DA9AB1CAB84FB001172AA /* alimentum.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C1DA9A91CAB84FB001172AA /* alimentum.xcdatamodeld */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		1ADCDA3148DA46A2D0F5B099 /* Pods-alimentum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-alimentum.release.xcconfig"; path = "Pods/Target Support Files/Pods-alimentum/Pods-alimentum.release.xcconfig"; sourceTree = "<group>"; };
+		7C00E5FA1CB8B4FE0038FBA0 /* Simulator Screen Shot Apr 8, 2016, 8.55.58 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot Apr 8, 2016, 8.55.58 PM.png"; path = "../../../../Desktop/Simulator Screen Shot Apr 8, 2016, 8.55.58 PM.png"; sourceTree = "<group>"; };
 		7C1DA99F1CAB84FB001172AA /* alimentum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alimentum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C1DA9A21CAB84FB001172AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C1DA9A71CAB84FB001172AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FirstTime.storyboard; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				7CEBC4151CB304E100CEACBF /* Credentials.swift */,
 				7C1DA9AE1CAB84FB001172AA /* LaunchScreen.storyboard */,
 				7C1DA9A61CAB84FB001172AA /* FirstTime.storyboard */,
+				7C00E5FA1CB8B4FE0038FBA0 /* Simulator Screen Shot Apr 8, 2016, 8.55.58 PM.png */,
 				7C581EC21CABE70C008B4ABB /* Main.storyboard */,
 				7C1DA9A21CAB84FB001172AA /* AppDelegate.swift */,
 				F48E447B1CAE8DF5007C65DC /* OpeningViewController.swift */,
@@ -279,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C1DA9B01CAB84FB001172AA /* LaunchScreen.storyboard in Resources */,
+				7C00E5FB1CB8B4FE0038FBA0 /* Simulator Screen Shot Apr 8, 2016, 8.55.58 PM.png in Resources */,
 				7C1DA9AD1CAB84FB001172AA /* Assets.xcassets in Resources */,
 				7C1DA9A81CAB84FB001172AA /* FirstTime.storyboard in Resources */,
 				F40F81A41CAC536F0072A1A8 /* Main.storyboard in Resources */,
