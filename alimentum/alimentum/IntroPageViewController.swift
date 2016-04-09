@@ -50,7 +50,7 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
         delegate = self
         
         //Set launchedBefore to be boolean value returned for NSUserDefault key "launchedBefore"
-        let launchedBefore = false //NSUserDefaults.standardUserDefaults().boolForKey("launchedBefore")
+        let launchedBefore = NSUserDefaults.standardUserDefaults().boolForKey("launchedBefore")
         
         //If launchedBefore returns true, present mainViewController
         if launchedBefore  {
@@ -71,7 +71,6 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
                 setViewControllers([firstViewController],direction: .Forward, animated: true, completion: nil)
                 viewDelegate?.introPageViewController(self, didUpdatePageCount: orderedViewControllers.count)
             }
-            //Call function initAppearance
             initAppearance()
         }
     
