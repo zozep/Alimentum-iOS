@@ -46,7 +46,7 @@ struct Credentials {
   - App Icon by [Art White](https://www.iconfinder.com/ArtWhite)
   
 ###About:
-  The purpose of this application was to **simplify** late night food searches. </ br>
+  The purpose of this application was to **simplify** late night food searches.
   Often, a lot of food related apps have too much information that is irrelevant. All we wanted to check were:
   - Are there any restaurants near me that are open at this hour?
   - Do they deliver?
