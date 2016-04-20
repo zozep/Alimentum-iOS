@@ -2,11 +2,9 @@
 //  AppDelegate.swift
 //  alimentum
 //
-//  Created by Nitish Dayal, Joseph Park
-//  Copyright © 2016 Nitish Dayal, Joseph Park. All rights reserved.
-//
-//  Libraries used in project include: UIKit, CoreLocation, 0AuthSwift
-//
+//  Created by Joseph Park, Nitish Dayal
+//  Copyright © 2016 Joseph Park, Nitish Dayal. All rights reserved.
+
 
 import UIKit
 import CoreLocation
@@ -29,26 +27,26 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var apiSearchTerm: NSString!
     
     /* Define variables to be used for CoreLocation functionality */
-    let locationManager = CLLocationManager() //Provides access to CoreLocation framework
-    var locationStatus : NSString = "Not Started" // String updated based on location/privacy settings of User
-    var userCurrentLocation: String! // Variable to store current location in form of City,State,ZIP,Country for API call
-    let reverseGeolocation = CLGeocoder() // Set CoreLocationGeoCoder to var reverseGeolocation. This is not the only use of CoreLocationGeoCoder, but this is the only use we will be getting from it.
+    let locationManager = CLLocationManager()           //Provides access to CoreLocation framework
+    var locationStatus : NSString = "Not Started"       // String updated based on location/privacy settings of User
+    var userCurrentLocation: String!                    // Variable to store current location in form of City,State,ZIP,Country for API call
+    let reverseGeolocation = CLGeocoder()               // Set CoreLocationGeoCoder to var reverseGeolocation.
     
     /* Variables for filtering returned address from API GET request */
     let chars = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890,.:".characters)
     
     /* Define variabled to be assigned to returned values from API GET request */
-    var businessList: NSArray = [] //Array of businesses returned from API call
-    var amtOfBusinessesAvailable: Int! //Total amt of businesses returned from API call (this variable is not utilized in the current iteration of this application)
-    var phoneNumber = String() //What could it be?!
+    var businessList: NSArray = []          //Array of businesses returned from API call
+    var amtOfBusinessesAvailable: Int!      //Total amt of businesses returned from API call (this var isn't used in the current iteration of this app)
+    var phoneNumber = String()
 
     
 //MARK: - Default functions that are a part of UIViewController
     
     override func viewDidLoad() {
         print("viewdidload")
-        
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib
         initAppearance()
         checkLocationServices()
@@ -160,6 +158,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             locationStatus = "Restricted access to location"
         case CLAuthorizationStatus.Denied:
             locationStatus = "User denied access to location"
+            
         case CLAuthorizationStatus.NotDetermined:
             locationStatus = "Status not determined"
         default:
@@ -180,7 +179,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     that is called whenever the user's location is updated. Defaults to updating every second */
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        //Throw it in reverse. Gets placemark location (see Swift docs for type CLPlacemark) value from provided latitude/longitude.
+        //Gets placemark location (see Swift docs for type CLPlacemark) value from provided latitude/longitude.
         reverseGeolocation.reverseGeocodeLocation(manager.location!) { (placemarks, error) in
             if (error != nil) {
                 print("Reverse geocoder failed with error" + error!.localizedDescription)
@@ -288,18 +287,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     print(error)
                 }
                 
-        }) { (error) -> Void in
-            print(error)
-        }
-    }
-    
-    /* This alert will be displayed if user does not have Location Services enabled. Will also direct them to their settings page so that they may turn it on */
-    func showLocationAlert() {
-        let alert = UIAlertController(title: "Location Error", message: "Our application required the use of your location. Please check that Settings>Privacy>Location Services is set to 'ON'.", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (alert) in
-            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-        }))
-        showViewController(alert, sender: self)
+            }) { (error) -> Void in
+                print(error)
+            }
     }
     
     
@@ -321,6 +311,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             // If user has location services enabled, request use of current location while app is in foreground (hence 'requestWhenInUse')
         }
 
+    }
+    
+    /* This alert will be displayed if user does not have Location Services enabled. Will also direct them to their settings page so that they may turn it on */
+    func showLocationAlert() {
+        let alert = UIAlertController(title: "Location Error", message: "Our application required the use of your location. Please check that Settings>Privacy>Location Services is set to 'ON'.", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (alert) in
+            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+        }))
+        showViewController(alert, sender: self)
     }
     
     /* Returns cleaned address after running filters on passed in values for displayAddress and city */

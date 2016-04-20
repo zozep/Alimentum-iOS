@@ -2,11 +2,9 @@
 //  AppDelegate.swift
 //  alimentum
 //
-//  Created by Nitish Dayal, Joseph Park
-//  Copyright © 2016 Nitish Dayal, Joseph Park. All rights reserved.
-//
-//  Libraries used in project include: UIKit, CoreLocation, 0AuthSwift
-//
+//  Created by Joseph Park, Nitish Dayal
+//  Copyright © 2016 Joseph Park, Nitish Dayal. All rights reserved.
+
 
 import UIKit
 import CoreLocation
@@ -20,7 +18,6 @@ protocol IntroPageViewControllerDelegate: class {
     /* Function that will be called to update current page count */
     func introPageViewController(pageViewController: IntroPageViewController, didUpdatePageCount count: Int)
     
-    /* "                                    " current page index */
     func introPageViewController(pageViewController: IntroPageViewController, didUpdatePageIndex index: Int)
 }
 
@@ -29,8 +26,6 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
    
 //MARK: - Declare variables to be used throughout IntroPageViewController
     weak var viewDelegate : IntroPageViewControllerDelegate?
-    
-    //orderedViewControllers will not be defined until called upon (lazy), and is an array of type UIViewController
     lazy var orderedViewControllers: [UIViewController] = {
         
         //When orderedViewControllers is called upon, set to array of value returned from calling method(function) newViewController
@@ -49,15 +44,13 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
         dataSource = self
         delegate = self
         
-        //Set launchedBefore to be boolean value returned for NSUserDefault key "launchedBefore"
         let launchedBefore = NSUserDefaults.standardUserDefaults().boolForKey("launchedBefore")
         
-        //If launchedBefore returns true, present mainViewController
-        if launchedBefore  {
+        if launchedBefore {
             let mainAppStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let mainVC = mainAppStoryboard.instantiateViewControllerWithIdentifier("MainViewController") as! MainViewController
             
-            //Present is done asynchronously in order to allow for current view controller to be added to the view hierarchy. Otherwise app break. And app break is the bad things.
+            //Present is done asynchronously in order to allow for current view controller to be added to the view hierarchy. Otherwise app breaks
             mainVC.checkLocationServices()
             dispatch_async(dispatch_get_main_queue(), {
                 self.presentViewController(mainVC, animated: true, completion: nil)

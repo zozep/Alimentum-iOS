@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  alimentum
 //
-//  Created by Nitish Dayal, Joseph Park
-//  Copyright © 2016 Nitish Dayal, Joseph Park. All rights reserved.
+//  Created by Joseph Park, Nitish Dayal
+//  Copyright © 2016 Joseph Park, Nitish Dayal. All rights reserved.
 //
 //  Libraries used in project include: UIKit, CoreLocation, 0AuthSwift
 //
