@@ -49,7 +49,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // Do any additional setup after loading the view, typically from a nib
         initAppearance()
-        checkLocationServices()
+        
         
     }
     
@@ -69,6 +69,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
 
+        
+        checkLocationServices()
     }
     
     override func didReceiveMemoryWarning() {
@@ -82,11 +84,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     /* Making separate section for each business to allow for spacing between cells */
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if businessList.count > 1 {
-            print("sectionsintable \(businessList.count)")
             return businessList.count
         }
         else {
-            print("sectionsintable false")
             return 1
         }
     }
@@ -94,17 +94,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     /* Each section should only have one row, for the one business it will hold */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section > 0 {
-            print("rowsinsection")
             return 1
         } else {
-            print(section, "rowsinsection")
             return 0
         }
     }
     
     /* Clear header for each section so that background view appears. */
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        print("headerview")
         let headerView = UIView()
         headerView.backgroundColor = UIColor.clearColor()
         return headerView
@@ -114,7 +111,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("businessCellIdentifier", forIndexPath: indexPath) as! BusinessListingTableViewCell
-        print("tableview cellforrow ", indexPath.section)
         
         //Check if businessList array has length greater than 0 (contains any values)
         if businessList.count > 0 {
@@ -151,27 +147,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     /* Simply checks to see if user has provided us with location access, then prints to log what type of accesss we have been granted */
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        var shouldIAllow = false
         
-        switch status {
-        case CLAuthorizationStatus.Restricted:
-            locationStatus = "Restricted access to location"
-        case CLAuthorizationStatus.Denied:
-            locationStatus = "User denied access to location"
-            
-        case CLAuthorizationStatus.NotDetermined:
-            locationStatus = "Status not determined"
-        default:
-            locationStatus = "Allowed access to location"
-            shouldIAllow = true
-        }
+        print("CHANGED STATUS")
         
         NSNotificationCenter.defaultCenter().postNotificationName("LabelHasbeenUpdated", object: nil)
-        if (shouldIAllow == true) {
+        
+        switch status {
+        case .Restricted, .Denied, .NotDetermined:
+            NSLog("Denied access: \(locationStatus)")
+        case .AuthorizedAlways, .AuthorizedWhenInUse:
             NSLog("Location set to allowed")
             locationManager.startUpdatingLocation()
-        } else {
-            NSLog("Denied access: \(locationStatus)")
         }
     }
     
@@ -199,6 +185,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //Set var userCurrentLocation to the returned values from successful reverseGeolocation.
         userCurrentLocation = "\(placemark.locality!),\(placemark.postalCode!),\(placemark.administrativeArea!),\(placemark.country!)"
+        print("user current location: \(userCurrentLocation)")
         
         //stop updating location to save battery life (The location should essentially be grabbed only one time instead of updating every second)
         locationManager.stopUpdatingLocation()
@@ -282,13 +269,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.businessList = result["businesses"]! as! NSArray
                     self.amtOfBusinessesAvailable = result["total"]! as! Int
                     self.animateTable()
-                    print(result)
+                    // print(result)
                 } catch let error as NSError {
-                    print(error)
+                    print(error.userInfo)
                 }
                 
             }) { (error) -> Void in
-                print(error)
+                print(error.userInfo)
             }
     }
     
@@ -302,22 +289,27 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     /* Called from IntroPageViewController on first app launch and MainViewController every app launch */
     func checkLocationServices() {
+        
         /* Once main view has appeared, check if user has enabled location services on their device */
-        if CLLocationManager.locationServicesEnabled() == false {
-            showLocationAlert() // If user has location services disabled, show UIAlertView described below in func showAlert
+        if CLLocationManager.locationServicesEnabled() {
+            switch CLLocationManager.authorizationStatus() {
             
-        } else {
-            locationManager.requestWhenInUseAuthorization()
-            // If user has location services enabled, request use of current location while app is in foreground (hence 'requestWhenInUse')
+            /* If user has location services disabled, show UIAlertView described below in func showLocationAlert */
+            case .Restricted, .Denied, .NotDetermined:
+                showLocationAlert()
+            case .AuthorizedAlways, .AuthorizedWhenInUse:
+                locationManager.requestWhenInUseAuthorization()
+            }
         }
-
     }
     
     /* This alert will be displayed if user does not have Location Services enabled. Will also direct them to their settings page so that they may turn it on */
     func showLocationAlert() {
+        print("YO")
         let alert = UIAlertController(title: "Location Error", message: "Our application required the use of your location. Please check that Settings>Privacy>Location Services is set to 'ON'.", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (alert) in
             UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+            self.checkLocationServices()
         }))
         showViewController(alert, sender: self)
     }
@@ -337,7 +329,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     /* Animates the tableView on every API call */
     func animateTable() {
         dispatch_async(dispatch_get_main_queue(), {
-            print("dispatchAsync animatetable")
             self.tableView.reloadData()
             self.scrollToFirstRow()
             let cells = self.tableView.visibleCells
