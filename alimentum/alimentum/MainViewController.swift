@@ -261,7 +261,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 "category_filter": "food",
                 "sort": "0",
                 "actionlinks" : "false",
-                "limit" : "10",
+                "limit" : "11",
                 "open_now" : "5758"
             ], successSearch: { (data, response) -> Void in
                 do {
