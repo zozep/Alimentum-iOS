@@ -50,7 +50,8 @@ struct Credentials {
   Often, a lot of food related apps have too much information that is irrelevant. All we wanted to check were:
   - Are there any restaurants near me that are open at this hour?
   - Do they deliver?
-  - How good is the food?
+  - Restaurant rating?
+  - Can we call them right away without separate search windows/additional typing?
 
 ###License:
   Released under MIT License
