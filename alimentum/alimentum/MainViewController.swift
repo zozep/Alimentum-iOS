@@ -46,7 +46,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         print("viewdidload")
         super.viewDidLoad()
-        
+        checkLocationServices()
         // Do any additional setup after loading the view, typically from a nib
         initAppearance()
         
@@ -56,6 +56,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(animated: Bool) {
         // Set tableView delegate & dataSource as current view controller, allow table row height to automatically adjust with a minimum value of 180
         print("viewwillappear")
+        checkLocationServices()
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -64,13 +65,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewDidAppear(animated: Bool) {
+        checkLocationServices()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
 
-        
-        checkLocationServices()
     }
     
     override func didReceiveMemoryWarning() {
@@ -155,6 +155,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         switch status {
         case .Restricted, .Denied, .NotDetermined:
             NSLog("Denied access: \(locationStatus)")
+            locationManager.self.requestWhenInUseAuthorization()
+
         case .AuthorizedAlways, .AuthorizedWhenInUse:
             NSLog("Location set to allowed")
             locationManager.startUpdatingLocation()
@@ -258,7 +260,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 "term": "\(term)",
                 "location": "\(location)",
                 "radius_filter": "8046.72",
-                "category_filter": "food",
+                "category_filter": "restaurants",
                 "sort": "0",
                 "actionlinks" : "false",
                 "limit" : "11",
@@ -306,10 +308,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     /* This alert will be displayed if user does not have Location Services enabled. Will also direct them to their settings page so that they may turn it on */
     func showLocationAlert() {
         print("YO")
-        let alert = UIAlertController(title: "Location Error", message: "Our application required the use of your location. Please check that Settings>Privacy>Location Services is set to 'ON'.", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (alert) in
+        let alert = UIAlertController(title: "Location Error", message: "Alimentum requires use of your location to work properly. \n Please make sure to \n \n 1. Turn location services on \n 2. Allow location access", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Settings", style: .Default, handler: { (alert) in
             UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-            self.checkLocationServices()
+//            self.checkLocationServices()
         }))
         showViewController(alert, sender: self)
     }

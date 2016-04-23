@@ -175,7 +175,7 @@ Bellevue, WA 98004</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="1XP-qz-2k9"/>
             </objects>
-            <point key="canvasLocation" x="565.5" y="607.5"/>
+            <point key="canvasLocation" x="241.5" y="490.5"/>
         </scene>
     </scenes>
 </document>

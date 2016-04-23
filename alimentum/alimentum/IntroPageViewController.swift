@@ -52,8 +52,10 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
             
             //Present is done asynchronously in order to allow for current view controller to be added to the view hierarchy. Otherwise app breaks
             mainVC.checkLocationServices()
+
             dispatch_async(dispatch_get_main_queue(), {
                 self.presentViewController(mainVC, animated: true, completion: nil)
+
             })
             
         //If launchedBefore returns false/is not set, set value for launchedBefore to true and show introductory views
@@ -112,8 +114,6 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
     }
     
     func initAppearance() -> Void {
-//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "rest.png")!)
-        //Set background color to be pretty turquouise gradient color
         let background = CAGradientLayer().turquoiseColor()
         background.frame = self.view.bounds
         self.view.layer.insertSublayer(background, atIndex: 0)
