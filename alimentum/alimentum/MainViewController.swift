@@ -41,22 +41,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var phoneNumber = String()
 
     
-//MARK: - Default functions that are a part of UIViewController
+    //MARK: - Default functions that are a part of UIViewController
     
     override func viewDidLoad() {
         print("viewdidload")
+        
         super.viewDidLoad()
-        checkLocationServices()
         // Do any additional setup after loading the view, typically from a nib
         initAppearance()
-        
         
     }
     
     override func viewWillAppear(animated: Bool) {
-        // Set tableView delegate & dataSource as current view controller, allow table row height to automatically adjust with a minimum value of 180
-        print("viewwillappear")
-        checkLocationServices()
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -65,12 +61,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewDidAppear(animated: Bool) {
-        checkLocationServices()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100.0
-
+        dispatch_async(dispatch_get_main_queue(), {
+            self.checkLocationServices()
+        })
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,11 +77,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-//MARK: - TableView Functions
-
+    //MARK: - TableView Functions
+    
     /* Making separate section for each business to allow for spacing between cells */
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if businessList.count > 1 {
+            print("sectionsintable \(businessList.count)")
             return businessList.count
         }
         else {
@@ -94,14 +93,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     /* Each section should only have one row, for the one business it will hold */
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section > 0 {
+            print("rowsinsection")
             return 1
         } else {
+            print(section, "rowsinsection")
             return 0
         }
     }
     
     /* Clear header for each section so that background view appears. */
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        print("headerview")
         let headerView = UIView()
         headerView.backgroundColor = UIColor.clearColor()
         return headerView
@@ -111,6 +113,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("businessCellIdentifier", forIndexPath: indexPath) as! BusinessListingTableViewCell
+        print("tableview cellforrow ", indexPath.section)
         
         //Check if businessList array has length greater than 0 (contains any values)
         if businessList.count > 0 {
@@ -141,33 +144,40 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         return cell
     }
-
     
-//MARK: - CoreLocation Functions
+    
+    //MARK: - CoreLocation Functions
     
     /* Simply checks to see if user has provided us with location access, then prints to log what type of accesss we have been granted */
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        
-        print("CHANGED STATUS")
-        
-        NSNotificationCenter.defaultCenter().postNotificationName("LabelHasbeenUpdated", object: nil)
+        var shouldIAllow = false
         
         switch status {
-        case .Restricted, .Denied, .NotDetermined:
-            NSLog("Denied access: \(locationStatus)")
-            locationManager.self.requestWhenInUseAuthorization()
-
-        case .AuthorizedAlways, .AuthorizedWhenInUse:
+        case CLAuthorizationStatus.Restricted:
+            locationStatus = "Restricted access to location"
+        case CLAuthorizationStatus.Denied:
+            locationStatus = "User denied access to location"
+        case CLAuthorizationStatus.NotDetermined:
+            locationStatus = "Status not determined"
+        default:
+            locationStatus = "Allowed access to location"
+            shouldIAllow = true
+        }
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("LabelHasbeenUpdated", object: nil)
+        if (shouldIAllow == true) {
             NSLog("Location set to allowed")
             locationManager.startUpdatingLocation()
+        } else {
+            NSLog("Denied access: \(locationStatus)")
         }
     }
     
     /* Function is a required delegate method (this viewController conforms to the CLLocationManagerDelegate by including this function)
-    that is called whenever the user's location is updated. Defaults to updating every second */
+     that is called whenever the user's location is updated. Defaults to updating every second */
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        //Gets placemark location (see Swift docs for type CLPlacemark) value from provided latitude/longitude.
+        //Throw it in reverse. Gets placemark location (see Swift docs for type CLPlacemark) value from provided latitude/longitude.
         reverseGeolocation.reverseGeocodeLocation(manager.location!) { (placemarks, error) in
             if (error != nil) {
                 print("Reverse geocoder failed with error" + error!.localizedDescription)
@@ -182,12 +192,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    /* This is the function of magic and mystery */
     func displayLocationInfo(placemark: CLPlacemark) {
         
         //Set var userCurrentLocation to the returned values from successful reverseGeolocation.
         userCurrentLocation = "\(placemark.locality!),\(placemark.postalCode!),\(placemark.administrativeArea!),\(placemark.country!)"
-        print("user current location: \(userCurrentLocation)")
         
         //stop updating location to save battery life (The location should essentially be grabbed only one time instead of updating every second)
         locationManager.stopUpdatingLocation()
@@ -199,14 +207,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    /* Function is a optional delegate method (this viewController can take advantage of this method because it conforms to the 
-    CLLocationManagerDelegate protocol) */
+    /* Function is a optional delegate method (this viewController can take advantage of this method because it conforms to the
+     CLLocationManagerDelegate protocol) */
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("Error finding location: \(error.localizedDescription)")
     }
     
     
-//MARK: - Custom Functions
+    //MARK: - Custom Functions
     
     /* Function called if '+' button next to phone # is pressed */
     @IBAction func phoneCallButton(sender: UIButton) {
@@ -215,7 +223,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             let dialerValue = NSURL(string: "tel://\((numberToDial))")
             UIApplication.sharedApplication().openURL(dialerValue!)
         }
-        //If businessList at index sender.tag has no value for key "display_phone", display UIAlertController
+            //If businessList at index sender.tag has no value for key "display_phone", display UIAlertController
         else {
             showNilPhoneAlert()
         }
@@ -247,7 +255,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    /* Function to make API request, passing in users location for parameter "location", 
+    /* Function to make API request, passing in users location for parameter "location",
      term updates based on 'delivery' or 'all' */
     func getFoodNearMe(location: String, term: NSString){
         
@@ -271,14 +279,23 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.businessList = result["businesses"]! as! NSArray
                     self.amtOfBusinessesAvailable = result["total"]! as! Int
                     self.animateTable()
-                    // print(result)
+                    print(result)
                 } catch let error as NSError {
-                    print(error.userInfo)
+                    print(error)
                 }
                 
-            }) { (error) -> Void in
-                print(error.userInfo)
-            }
+        }) { (error) -> Void in
+            print(error)
+        }
+    }
+    
+    /* This alert will be displayed if user does not have Location Services enabled. Will also direct them to their settings page so that they may turn it on */
+    func showLocationAlert() {
+        let alert = UIAlertController(title: "Location Error", message: "Please allow Alimentum to access your location. \n Set the location setting to be 'ON' in \n \n Settings > Privacy > Location Services", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Settings", style: .Default, handler: { (alert) in
+            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+        }))
+        showViewController(alert, sender: self)
     }
     
     
@@ -291,29 +308,38 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     /* Called from IntroPageViewController on first app launch and MainViewController every app launch */
     func checkLocationServices() {
-        
         /* Once main view has appeared, check if user has enabled location services on their device */
-        if CLLocationManager.locationServicesEnabled() {
-            switch CLLocationManager.authorizationStatus() {
+        if CLLocationManager.locationServicesEnabled() == false {
+            showLocationAlert() // If user has location services disabled, show UIAlertView described below in func showAlert
             
-            /* If user has location services disabled, show UIAlertView described below in func showLocationAlert */
-            case .Restricted, .Denied, .NotDetermined:
-                showLocationAlert()
-            case .AuthorizedAlways, .AuthorizedWhenInUse:
-                locationManager.requestWhenInUseAuthorization()
+        } else {
+            switch CLLocationManager.authorizationStatus() {
+            case CLAuthorizationStatus.AuthorizedAlways, CLAuthorizationStatus.AuthorizedWhenInUse: break
+            // ...
+            case CLAuthorizationStatus.NotDetermined:
+                self.locationManager.requestAlwaysAuthorization()
+            case CLAuthorizationStatus.Restricted, CLAuthorizationStatus.Denied:
+                let alertController = UIAlertController(
+                    title: "Background Location Access Disabled",
+                    message: "In order to be notified about restaurants around you, please open this app's settings and set location access to 'Always'.",
+                    preferredStyle: .Alert)
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+                alertController.addAction(cancelAction)
+                
+                let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
+                    if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+                        UIApplication.sharedApplication().openURL(url)
+                    }
+                }
+                alertController.addAction(openAction)
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
             }
+            
+            // If user has location services enabled, request use of current location while app is in foreground (hence 'requestWhenInUse')
         }
-    }
-    
-    /* This alert will be displayed if user does not have Location Services enabled. Will also direct them to their settings page so that they may turn it on */
-    func showLocationAlert() {
-        print("YO")
-        let alert = UIAlertController(title: "Location Error", message: "Alimentum requires use of your location to work properly. \n Please make sure to \n \n 1. Turn location services on \n 2. Allow location access", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Settings", style: .Default, handler: { (alert) in
-            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-//            self.checkLocationServices()
-        }))
-        showViewController(alert, sender: self)
+        
     }
     
     /* Returns cleaned address after running filters on passed in values for displayAddress and city */
@@ -331,6 +357,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     /* Animates the tableView on every API call */
     func animateTable() {
         dispatch_async(dispatch_get_main_queue(), {
+            print("dispatchAsync animatetable")
             self.tableView.reloadData()
             self.scrollToFirstRow()
             let cells = self.tableView.visibleCells
@@ -361,4 +388,3 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
     }
 }
-
