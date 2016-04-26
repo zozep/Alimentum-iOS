@@ -321,13 +321,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             case CLAuthorizationStatus.Restricted, CLAuthorizationStatus.Denied:
                 let alertController = UIAlertController(
                     title: "Background Location Access Disabled",
-                    message: "In order to be notified about restaurants around you, please open this app's settings and set location access to 'Always'.",
+                    message: "In order to use this application, please go to settings and set location access to 'Always'.",
                     preferredStyle: .Alert)
                 
-                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-                alertController.addAction(cancelAction)
+//                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+//                alertController.addAction(cancelAction)
                 
-                let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
+                let openAction = UIAlertAction(title: "Settings", style: .Default) { (action) in
                     if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
                         UIApplication.sharedApplication().openURL(url)
                     }
