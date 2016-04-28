@@ -52,15 +52,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestLocation()
         loadingSpinner.layer.cornerRadius = 2.5
-    }
-    
-    override func viewDidAppear(animated: Bool) {
+
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -82,7 +81,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     /* Making separate section for each business to allow for spacing between cells */
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if businessList.count > 1 {
-            print("sectionsintable \(businessList.count)")
+            //print("sectionsintable \(businessList.count)")
             return businessList.count
         }
         else {
@@ -288,12 +287,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             print(error)
         }
     }
+    func showRefeshAlert() {
+        let alert = UIAlertController(title: "Refresh Location", message: "Please check your Location Service Settings", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: { (alert) in
+            self.checkLocationServices()
+        }))
+        showViewController(alert, sender: self)
+    }
     
     /* This alert will be displayed if user does not have Location Services enabled. Will also direct them to their settings page so that they may turn it on */
     func showLocationAlert() {
         let alert = UIAlertController(title: "Location Error", message: "Please allow Alimentum to access your location. \n Set the location setting to be 'ON' in \n \n Settings > Privacy > Location Services", preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "Settings", style: .Default, handler: { (alert) in
-            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+            UIApplication.sharedApplication().openURL(NSURL(string: "prefs:root=Privacy")!)
+            self.showRefeshAlert()
         }))
         showViewController(alert, sender: self)
     }
@@ -314,22 +321,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
         } else {
             switch CLLocationManager.authorizationStatus() {
-            case CLAuthorizationStatus.AuthorizedAlways, CLAuthorizationStatus.AuthorizedWhenInUse: break
-            // ...
+            case CLAuthorizationStatus.AuthorizedAlways, CLAuthorizationStatus.AuthorizedWhenInUse:
+                break
             case CLAuthorizationStatus.NotDetermined:
                 self.locationManager.requestAlwaysAuthorization()
             case CLAuthorizationStatus.Restricted, CLAuthorizationStatus.Denied:
                 let alertController = UIAlertController(
                     title: "Background Location Access Disabled",
-                    message: "In order to use this application, please go to settings and set location access to 'Always'.",
+                    message: "In order to use this application, please go to settings and set location access to 'While using the App' or 'Always'.",
                     preferredStyle: .Alert)
-                
-//                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-//                alertController.addAction(cancelAction)
                 
                 let openAction = UIAlertAction(title: "Settings", style: .Default) { (action) in
                     if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
                         UIApplication.sharedApplication().openURL(url)
+                        self.showRefeshAlert()
                     }
                 }
                 alertController.addAction(openAction)
