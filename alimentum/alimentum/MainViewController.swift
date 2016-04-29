@@ -39,6 +39,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var businessList: NSArray = []          //Array of businesses returned from API call
     var amtOfBusinessesAvailable: Int!      //Total amt of businesses returned from API call (this var isn't used in the current iteration of this app)
     var phoneNumber = String()
+    var categories = String()
+    
 
     
     //MARK: - Default functions that are a part of UIViewController
@@ -137,9 +139,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             //Set display values for current cell
             cell.businessName.text = "\(currentBusiness["name"]!! as! String)"
             cell.callPhoneNumber.tag = indexPath.section
-            cell.phoneNumber.text = "Phone: \(phoneNumber)"
-            cell.address.text = "Address: \n\(businessAddress)"
-            cell.rating.text = "Yelp! Rating: \(String(currentBusiness["rating"]!! as! Int))"
+            cell.phoneNumber.text = "\(phoneNumber)"
+            cell.address.text = "\(businessAddress)"
+            cell.foodType.text = "\(currentBusiness["categories"]!! as! String))"
+            cell.rating.text = "\(String(currentBusiness["rating"]!! as! Int))/5 Yelp! rating"
         }
         return cell
     }
@@ -317,7 +320,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func checkLocationServices() {
         /* Once main view has appeared, check if user has enabled location services on their device */
         if CLLocationManager.locationServicesEnabled() == false {
-            showLocationAlert() // If user has location services disabled, show UIAlertView described below in func showAlert
+            showLocationAlert()     // If user has location services disabled, show UIAlertView described below in func showAlert
             
         } else {
             switch CLLocationManager.authorizationStatus() {
@@ -328,7 +331,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             case CLAuthorizationStatus.Restricted, CLAuthorizationStatus.Denied:
                 let alertController = UIAlertController(
                     title: "Background Location Access Disabled",
-                    message: "In order to use this application, please go to settings and set location access to 'While using the App' or 'Always'.",
+                    message: "In order to use this application, please go to Settings and set Location Access to 'While Using the App' or 'Always'.",
                     preferredStyle: .Alert)
                 
                 let openAction = UIAlertAction(title: "Settings", style: .Default) { (action) in
@@ -341,8 +344,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 self.presentViewController(alertController, animated: true, completion: nil)
             }
-            
-            // If user has location services enabled, request use of current location while app is in foreground (hence 'requestWhenInUse')
         }
         
     }
@@ -351,7 +352,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func cleanReturnedAddress(address: String, city: String) -> String {
         
         let whiteSpaceString = String(address.characters.filter { chars.contains($0) })
-        var returnString = whiteSpaceString.removeWhitespace().stringByReplacingOccurrencesOfString(",", withString: "\n")
+        var returnString = whiteSpaceString.removeWhitespace().stringByReplacingOccurrencesOfString(",", withString: " ")
         let insertCommaHere = returnString.endIndex.advancedBy(-10)
         returnString.removeAtIndex(insertCommaHere)
         returnString.insert(",", atIndex: insertCommaHere)
