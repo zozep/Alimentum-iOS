@@ -141,7 +141,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.callPhoneNumber.tag = indexPath.section
             cell.phoneNumber.text = "\(phoneNumber)"
             cell.address.text = "\(businessAddress)"
-            cell.foodType.text = "\(currentBusiness["categories"]!! as! String))"
+//            cell.foodType.text = "\(currentBusiness["categories"]!! as! String))"
             cell.rating.text = "\(String(currentBusiness["rating"]!! as! Int))/5 Yelp! rating"
         }
         return cell
@@ -264,7 +264,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         //While running API get request and setting up table, display activity indicator
         loadingSpinner.startAnimating()
         
-        //
         client.searchPlacesWithParameters(
             [
                 "term": "\(term)",
@@ -274,7 +273,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 "sort": "0",
                 "actionlinks" : "false",
                 "limit" : "11",
-                "open_now" : "5758"
+                "open_now" : "10059"
             ], successSearch: { (data, response) -> Void in
                 do {
                     let result = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
