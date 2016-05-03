@@ -32,7 +32,7 @@ struct Credentials {
 ######Development Environment: 
   - Swift 2.2
   - Xcode 7.3
-  - Yelp API
+  - Yelp API (SWITCHING TO GOOGLEMAPS API)
   - OAuthSwift
   - iOS Core Frameworks: CoreLocation
   - Github and Git
