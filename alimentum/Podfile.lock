@@ -1,15 +1,15 @@
 PODS:
-  - OAuthSwift (0.5.1)
-  - SwiftyJSON (2.3.2)
+  - OAuthSwift (1.1.0)
+  - SwiftyJSON (3.1.1)
 
 DEPENDENCIES:
-  - OAuthSwift (~> 0.5.0)
-  - SwiftyJSON (~> 2.3.2)
+  - OAuthSwift (~> 1.1.0)
+  - SwiftyJSON (~> 3.1.1)
 
 SPEC CHECKSUMS:
-  OAuthSwift: d63f7f329f49787319a7e35974c18b10865fe636
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  OAuthSwift: 7ec2c62274f6bdc30b1ba3b799c39a6fdcaea0e5
+  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
 
-PODFILE CHECKSUM: 6a0b98fe90d3840faf22076d9634163b36145504
+PODFILE CHECKSUM: c8823bf14e047bc2a44a007a1b4b42baa47afa9f
 
-COCOAPODS: 1.0.0.beta.6
+COCOAPODS: 1.2.0.beta.1
