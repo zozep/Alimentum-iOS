@@ -3,4 +3,4 @@ Source/Application.h
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata
-alimentum/Pods/
+alimentum/Pods
